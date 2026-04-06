@@ -554,3 +554,307 @@ nav {
   font-size: 14px;
   color: white;
 }
+
+/* Small Laptop  */
+@media (max-width: 1280px) {
+  .container {
+    width: 85%;
+  }
+
+  nav {
+    grid-template-columns: 18% 55% 18% 9%;
+    gap: 8px;
+  }
+
+  .search input {
+    width: 380px;
+  }
+
+  .stats {
+    grid-template-columns: 22% 32% 46%;
+  }
+
+  .psCard {
+    width: 420px;
+  }
+}
+
+/*  Tablet  */
+@media (max-width: 900px) {
+  .container {
+    width: 80%;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .logo {
+    flex: 1;
+    font-size: 24px;
+  }
+
+  .themeToggle {
+    order: 2;
+  }
+
+  .saved {
+    order: 3;
+  }
+
+  .search {
+    order: 4;
+    width: 100%;
+  }
+
+  .search input {
+    width: calc(100% - 60px);
+    max-width: 100%;
+  }
+
+  /* Weather display */
+  .weatherDisplay,
+  .hourlyForecast,
+  .placeSuggestionCard {
+    padding: 18px 20px;
+    border-radius: 22px;
+  }
+
+  .estTemp {
+    font-size: 72px;
+  }
+
+  .estTemp img {
+    width: 130px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .stats .stat:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  #wind-card {
+    height: 120px;
+  }
+
+  /* Suggestions wrap */
+  .suggestionGroup {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Place suggestion cards */
+  .psCards {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .psCard {
+    width: 100%;
+  }
+
+  .hForecastCards {
+    gap: 8px;
+  }
+
+  .hCard {
+    min-width: 68px;
+    padding: 8px 6px;
+  }
+}
+
+/*  Phone */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+
+  nav {
+    margin-top: 14px;
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .themeToggle {
+    width: 120px;
+    height: 36px;
+  }
+
+  .themeToggle button {
+    width: 52px;
+    height: 26px;
+    font-size: 13px;
+  }
+
+  .saved button,
+  .saveBtn button {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .search input {
+    height: 42px;
+    font-size: 0.9rem;
+    padding: 0 16px;
+  }
+
+  .search button {
+    width: 40px;
+    height: 30px;
+    right: 48px;
+    font-size: 13px;
+  }
+
+  /* Weather display */
+  .weatherDisplay,
+  .hourlyForecast,
+  .placeSuggestionCard {
+    margin-top: 12px;
+    padding: 14px 14px;
+    border-radius: 18px;
+  }
+
+  .cityLine {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .country {
+    font-size: 15px;
+    padding: 7px 10px;
+  }
+
+  .country i {
+    font-size: 15px;
+    margin-right: 6px;
+  }
+
+  .city {
+    font-size: 15px;
+  }
+
+  .estTemp {
+    font-size: 56px;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .estTemp img {
+    width: 90px;
+  }
+
+  .estWeather {
+    font-size: 15px;
+    margin-top: 6px;
+  }
+
+  /* Suggestions */
+  .suggestionGroup {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .suggestion {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .stats .stat:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .stat {
+    margin: 6px 0;
+  }
+
+  .statLabel {
+    font-size: 15px;
+  }
+
+  .estHumidity,
+  .avgTemp,
+  #wind-card {
+    font-size: 17px;
+    padding: 8px;
+  }
+
+  #wind-card {
+    height: 110px;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .windSpeed {
+    font-size: 20px;
+  }
+
+  .windSpeed .kmp {
+    font-size: 0.85rem;
+  }
+
+  .avgTDescription {
+    font-size: 13px;
+  }
+
+  .hfTitle,
+  .psTitle {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .hCard {
+    min-width: 60px;
+    padding: 6px 4px;
+  }
+
+  .hCard img {
+    width: 36px;
+  }
+
+  .hCard .temp {
+    font-size: 13px;
+  }
+
+  .hCard .time {
+    font-size: 11px;
+  }
+
+  .psCard {
+    width: 100%;
+    padding: 10px 12px;
+  }
+
+  .psCard .psPlace {
+    font-size: 14px;
+  }
+
+  .psCard button {
+    height: 30px;
+    font-size: 13px;
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+}
