@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Slabo+13px&family=Vidaloka&display=swap"
       rel="stylesheet"
@@ -17,6 +15,8 @@
     />
     <link rel="shortcut icon" href="IMG/Favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
+    <!-- ↓ Responsive overrides — load AFTER style.css -->
+    <link rel="stylesheet" href="responsive.css" />
     <title>McWeather</title>
   </head>
   <body class="day">
@@ -52,7 +52,6 @@
                 <i class="fa-solid fa-location-dot"></i
                 ><span class="city">Yangon, Myanmar</span>
               </div>
-              <!-- <div class="time">2026-3-22 2:00 AM - GMT + 6:30</div> -->
             </div>
             <div class="saveBtn"><button>☆</button></div>
           </div>
@@ -89,40 +88,6 @@
           <div class="psCards"></div>
         </div>
       </div>
-      <!-- <div class="calendar">
-        <div class="calendarCard">
-          Month Nav
-          <div class="monthHeader">
-            <button class="prevM" onclick="changeMonth(-1)">‹</button>
-            <div class="curM">
-              <div class="monthLabel" id="month-label">
-                <span class="yearLabel"></span>
-              </div>
-            </div>
-            <button class="nextM" onclick="changeMonth(1)">›</button>
-          </div>
-
-          Day Headers
-          <div class="dayHeaders">
-            <div class="dayHeaderCell weekend">Sun</div>
-            <div class="dayHeaderCell">Mon</div>
-            <div class="dayHeaderCell">Tue</div>
-            <div class="dayHeaderCell">Wed</div>
-            <div class="dayHeaderCell">Thu</div>
-            <div class="dayHeaderCell">Fri</div>
-            <div class="dayHeaderCell weekend">Sat</div>
-          </div>
-
-          <hr
-            style="
-              border: 1px solid rgba(255, 255, 255, 0.407);
-              margin-top: 10px;
-            "
-          />
-          Grid
-          <div class="calGrid" id="calGrid"></div>
-        </div>
-      </div> -->
     </div>
   </body>
   <script src="script.js"></script>

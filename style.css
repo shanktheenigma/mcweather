@@ -555,34 +555,98 @@ nav {
   color: white;
 }
 
-/* Small Laptop  */
+.container {
+  width: min(90%, 1100px);
+  padding: 0 12px;
+}
+
+nav {
+  grid-template-columns: auto 1fr auto auto;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+}
+
+.searchBtn input {
+  width: 100%;
+  max-width: 100%;
+  padding-right: 56px;
+}
+
+.search button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.estTemp {
+  font-size: 84px;
+  line-height: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.estTemp img {
+  width: 140px;
+}
+
+.stats {
+  grid-template-columns: 1fr 1fr 1.6fr;
+  gap: 4px;
+}
+
+#wind-card {
+  height: 140px;
+}
+
+.psCard {
+  width: 100%;
+  max-width: 520px;
+}
+
+.hCard {
+  flex: 0 0 auto;
+  min-width: 72px;
+}
+
+/* Small Laptop */
 @media (max-width: 1280px) {
   .container {
-    width: 85%;
+    width: min(92%, 960px);
   }
 
-  nav {
-    grid-template-columns: 18% 55% 18% 9%;
-    gap: 8px;
+  .estTemp {
+    font-size: 76px;
   }
 
-  .search input {
-    width: 380px;
+  .estTemp img {
+    width: 120px;
   }
 
   .stats {
-    grid-template-columns: 22% 32% 46%;
-  }
-
-  .psCard {
-    width: 420px;
+    grid-template-columns: 1fr 1fr 1.4fr;
   }
 }
 
-/*  Tablet  */
+/*  Tablet */
 @media (max-width: 900px) {
   .container {
-    width: 80%;
+    width: 94%;
+    padding: 0 8px;
   }
 
   nav {
@@ -591,19 +655,18 @@ nav {
     align-items: center;
     gap: 10px;
     height: auto;
-    margin-top: 20px;
-    padding-bottom: 10px;
+    margin-top: 16px;
+    padding-bottom: 8px;
   }
 
   .logo {
     flex: 1;
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .themeToggle {
     order: 2;
   }
-
   .saved {
     order: 3;
   }
@@ -611,56 +674,69 @@ nav {
   .search {
     order: 4;
     width: 100%;
+    justify-content: flex-start;
   }
 
-  .search input {
-    width: calc(100% - 60px);
+  .searchBtn {
     max-width: 100%;
   }
 
-  /* Weather display */
   .weatherDisplay,
   .hourlyForecast,
   .placeSuggestionCard {
-    padding: 18px 20px;
-    border-radius: 22px;
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 14px;
   }
 
   .estTemp {
-    font-size: 72px;
+    font-size: 64px;
   }
 
   .estTemp img {
-    width: 130px;
+    width: 110px;
+  }
+
+  .estWeather {
+    font-size: 16px;
+  }
+
+  .suggestionGroup {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .suggestion {
+    font-size: 12px;
+    margin-bottom: 20px;
   }
 
   .stats {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
+    gap: 0;
   }
 
   .stats .stat:nth-child(3) {
     grid-column: 1 / -1;
   }
 
+  .stat {
+    margin: 8px 6px;
+  }
+
+  .statLabel {
+    font-size: 16px;
+  }
+
   #wind-card {
     height: 120px;
   }
 
-  /* Suggestions wrap */
-  .suggestionGroup {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  /* Place suggestion cards */
-  .psCards {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .psCard {
-    width: 100%;
+  .hfTitle,
+  .psTitle {
+    font-size: 17px;
   }
 
   .hForecastCards {
@@ -668,116 +744,131 @@ nav {
   }
 
   .hCard {
-    min-width: 68px;
+    min-width: 66px;
     padding: 8px 6px;
+  }
+
+  .hCard img {
+    width: 40px;
+  }
+
+  .psCards {
+    gap: 10px;
+  }
+
+  .psCard {
+    max-width: 100%;
+    padding: 12px 14px;
   }
 }
 
-/*  Phone */
+/*  Phone  */
 @media (max-width: 480px) {
   .container {
-    width: 95%;
+    width: 96%;
+    padding: 0 4px;
   }
 
   nav {
-    margin-top: 14px;
+    margin-top: 12px;
     gap: 8px;
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .themeToggle {
-    width: 120px;
-    height: 36px;
+    width: 112px;
+    height: 34px;
   }
 
   .themeToggle button {
-    width: 52px;
+    width: 48px;
     height: 26px;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .saved button,
   .saveBtn button {
     width: 34px;
     height: 34px;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0 8px;
   }
 
   .search input {
     height: 42px;
-    font-size: 0.9rem;
-    padding: 0 16px;
+    font-size: 0.88rem;
+    padding: 0 14px;
+    padding-right: 52px;
   }
 
   .search button {
-    width: 40px;
-    height: 30px;
-    right: 48px;
-    font-size: 13px;
+    width: 38px;
+    height: 28px;
+    font-size: 12px;
   }
 
-  /* Weather display */
   .weatherDisplay,
   .hourlyForecast,
   .placeSuggestionCard {
-    margin-top: 12px;
-    padding: 14px 14px;
-    border-radius: 18px;
+    margin-top: 10px;
+    padding: 14px 12px;
+    border-radius: 16px;
   }
 
   .cityLine {
-    flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
 
   .country {
-    font-size: 15px;
-    padding: 7px 10px;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 12px;
   }
 
   .country i {
-    font-size: 15px;
-    margin-right: 6px;
+    font-size: 13px;
+    margin-right: 5px;
   }
 
   .city {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .estTemp {
-    font-size: 56px;
-    flex-direction: row;
-    align-items: center;
+    font-size: 48px;
     gap: 4px;
   }
 
   .estTemp img {
-    width: 90px;
+    width: 80px;
   }
 
   .estWeather {
-    font-size: 15px;
-    margin-top: 6px;
+    font-size: 14px;
+    margin-top: 4px;
   }
 
-  /* Suggestions */
   .suggestionGroup {
     flex-direction: column;
     gap: 6px;
   }
 
   .suggestion {
-    font-size: 12px;
-    margin-bottom: 16px;
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+
+  hr {
+    margin: 8px 0;
   }
 
   .stats {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    gap: 0;
   }
 
   .stats .stat:nth-child(3) {
@@ -785,76 +876,94 @@ nav {
   }
 
   .stat {
-    margin: 6px 0;
+    margin: 5px 0;
   }
 
   .statLabel {
-    font-size: 15px;
-  }
-
-  .estHumidity,
-  .avgTemp,
-  #wind-card {
-    font-size: 17px;
-    padding: 8px;
-  }
-
-  #wind-card {
-    height: 110px;
-    flex-direction: row;
-    gap: 8px;
-  }
-
-  .windSpeed {
-    font-size: 20px;
-  }
-
-  .windSpeed .kmp {
-    font-size: 0.85rem;
-  }
-
-  .avgTDescription {
-    font-size: 13px;
-  }
-
-  .hfTitle,
-  .psTitle {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .hCard {
-    min-width: 60px;
-    padding: 6px 4px;
-  }
-
-  .hCard img {
-    width: 36px;
-  }
-
-  .hCard .temp {
-    font-size: 13px;
-  }
-
-  .hCard .time {
-    font-size: 11px;
-  }
-
-  .psCard {
-    width: 100%;
-    padding: 10px 12px;
-  }
-
-  .psCard .psPlace {
     font-size: 14px;
   }
 
-  .psCard button {
-    height: 30px;
+  .estHumidity,
+  .avgTemp {
+    font-size: 16px;
+    padding: 8px 10px;
+    margin-right: 0;
+  }
+
+  .avgTDescription {
+    font-size: 12px;
+  }
+
+  .avgTDescription span {
     font-size: 13px;
   }
 
-  hr {
-    margin: 10px 0;
+  #wind-card {
+    height: 100px;
+    padding: 8px 10px;
+    font-size: 16px;
+    margin-right: 0;
+  }
+
+  .windSpeed {
+    font-size: 18px;
+    margin-top: 6px;
+  }
+
+  .windSpeed .kmp {
+    font-size: 0.8rem;
+  }
+
+  .windInfo span {
+    font-size: 0.75rem;
+  }
+
+  /* Hourly */
+  .hfTitle,
+  .psTitle {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .hForecastCards {
+    gap: 6px;
+  }
+
+  .hCard {
+    min-width: 58px;
+    padding: 6px 4px;
+    border-radius: 12px;
+  }
+
+  .hCard img {
+    width: 32px;
+  }
+
+  .hCard .temp {
+    font-size: 12px;
+  }
+
+  .hCard .time {
+    font-size: 10px;
+  }
+
+  .psCards {
+    gap: 8px;
+  }
+
+  .psCard {
+    max-width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .psCard .psPlace {
+    font-size: 13px;
+  }
+
+  .psCard button {
+    height: 28px;
+    font-size: 12px;
+    border-radius: 8px;
   }
 }
