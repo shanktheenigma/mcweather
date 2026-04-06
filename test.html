@@ -1,0 +1,1494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aether Calendar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --glass: rgba(255, 255, 255, 0.12);
+        --glass-border: rgba(255, 255, 255, 0.22);
+        --glass-hover: rgba(255, 255, 255, 0.18);
+        --glass-deep: rgba(255, 255, 255, 0.07);
+        --text: #fff;
+        --text-muted: rgba(255, 255, 255, 0.6);
+        --text-dim: rgba(255, 255, 255, 0.35);
+        --shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        --radius: 24px;
+        --radius-sm: 16px;
+        --radius-xs: 10px;
+
+        --bg-jan: linear-gradient(
+          135deg,
+          #2c3e6b 0%,
+          #1a2a4a 50%,
+          #0d1b33 100%
+        );
+        --bg-feb: linear-gradient(
+          135deg,
+          #6b2fa0 0%,
+          #4a1a7a 50%,
+          #2d0d50 100%
+        );
+        --bg-mar: linear-gradient(
+          135deg,
+          #2d7a4a 0%,
+          #1a5a30 50%,
+          #0d3320 100%
+        );
+        --bg-apr: linear-gradient(
+          135deg,
+          #4a7a2d 0%,
+          #3a6020 50%,
+          #204010 100%
+        );
+        --bg-may: linear-gradient(
+          135deg,
+          #7a5a2d 0%,
+          #6a4a1a 50%,
+          #40280a 100%
+        );
+        --bg-jun: linear-gradient(
+          135deg,
+          #f7971e 0%,
+          #e85d04 40%,
+          #9c2900 100%
+        );
+        --bg-jul: linear-gradient(
+          135deg,
+          #c94b0a 0%,
+          #a33008 50%,
+          #701500 100%
+        );
+        --bg-aug: linear-gradient(
+          135deg,
+          #d4831a 0%,
+          #b06010 50%,
+          #703a00 100%
+        );
+        --bg-sep: linear-gradient(
+          135deg,
+          #89a4c7 0%,
+          #6b7f9e 40%,
+          #3d4f6e 100%
+        );
+        --bg-oct: linear-gradient(
+          135deg,
+          #8b4513 0%,
+          #6b3010 50%,
+          #401800 100%
+        );
+        --bg-nov: linear-gradient(
+          135deg,
+          #4a5a7a 0%,
+          #2a3a5a 50%,
+          #151e33 100%
+        );
+        --bg-dec: linear-gradient(
+          135deg,
+          #2c4a6b 0%,
+          #1a3050 50%,
+          #0a1828 100%
+        );
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        min-height: 100vh;
+        background: var(--bg-jun);
+        color: var(--text);
+        overflow-x: hidden;
+        transition: background 1.4s ease;
+        position: relative;
+      }
+
+      /* ── ANIMATED BG ── */
+      #canvas-bg {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .sun-glow {
+        position: fixed;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 200, 50, 0.18) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+        animation: pulse-glow 5s ease-in-out infinite;
+        transition: opacity 1.5s;
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          transform: translateX(-50%) scale(1.12);
+        }
+      }
+
+      /* ── WRAPPER ── */
+      .app-wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 28px 20px 60px;
+      }
+
+      /* ── HEADER ── */
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 28px;
+      }
+      .logo {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.7rem;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo span {
+        font-style: italic;
+        opacity: 0.7;
+        font-size: 1rem;
+      }
+
+      .header-right {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .icon-btn {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        color: #fff;
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+        backdrop-filter: blur(12px);
+      }
+      .icon-btn:hover {
+        background: var(--glass-hover);
+        transform: scale(1.08);
+      }
+
+      /* ── MAIN CARD ── */
+      .calendar-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        backdrop-filter: blur(24px);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        animation: fadeUp 0.6s ease both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── MONTH HEADER ── */
+      .month-header {
+        padding: 28px 32px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .month-nav {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .nav-btn {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        color: #fff;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1rem;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        backdrop-filter: blur(8px);
+      }
+      .nav-btn:hover {
+        background: var(--glass-hover);
+        transform: scale(1.1);
+      }
+
+      .month-label {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        letter-spacing: -0.5px;
+        min-width: 220px;
+        text-align: center;
+      }
+      .year-label {
+        font-size: 0.85rem;
+        opacity: 0.55;
+        margin-left: 6px;
+        font-style: italic;
+      }
+
+      .today-btn {
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        border-radius: 50px;
+        padding: 8px 18px;
+        font-size: 0.82rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+        backdrop-filter: blur(8px);
+      }
+      .today-btn:hover {
+        background: rgba(255, 255, 255, 0.24);
+      }
+
+      /* ── WEATHER MOOD BAR ── */
+      .mood-bar {
+        padding: 10px 32px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+      .mood-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 2px;
+      }
+      .mood-items {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .mood-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* ── DAY HEADERS ── */
+      .day-headers {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        padding: 14px 20px 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .day-header-cell {
+        text-align: center;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-dim);
+        font-weight: 500;
+      }
+      .day-header-cell.weekend {
+        color: rgba(255, 200, 100, 0.5);
+      }
+
+      /* ── CALENDAR GRID ── */
+      .cal-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0;
+        padding: 8px 16px 20px;
+      }
+
+      .day-cell {
+        min-height: 96px;
+        padding: 10px 8px 8px;
+        border-radius: var(--radius-xs);
+        cursor: pointer;
+        position: relative;
+        transition:
+          background 0.18s,
+          transform 0.15s;
+        margin: 3px;
+      }
+      .day-cell:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: scale(1.02);
+      }
+      .day-cell.other-month {
+        opacity: 0.28;
+        pointer-events: none;
+      }
+      .day-cell.today {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .day-cell.today .day-num {
+        background: rgba(255, 255, 255, 0.9);
+        color: #1a1a2e;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+      .day-cell.selected {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .day-cell.weekend-col .day-num {
+        color: rgba(255, 210, 120, 0.9);
+      }
+
+      .day-num {
+        font-size: 0.9rem;
+        font-weight: 500;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 6px;
+      }
+
+      /* Weather icon on each day */
+      .day-weather {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+      .day-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+      .day-temp {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+      .day-temp .hi {
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      /* Event dots */
+      .event-dots {
+        position: absolute;
+        bottom: 7px;
+        left: 8px;
+        display: flex;
+        gap: 3px;
+      }
+      .event-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+      }
+
+      /* Mood bg tint per cell */
+      .mood-sunny {
+        background: rgba(247, 151, 30, 0.08) !important;
+      }
+      .mood-rain {
+        background: rgba(44, 62, 107, 0.12) !important;
+      }
+      .mood-cloudy {
+        background: rgba(107, 127, 158, 0.1) !important;
+      }
+      .mood-snow {
+        background: rgba(184, 212, 234, 0.1) !important;
+      }
+      .mood-thunder {
+        background: rgba(15, 52, 96, 0.15) !important;
+      }
+
+      /* ── BOTTOM PANEL ── */
+      .bottom-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 18px;
+      }
+      @media (max-width: 600px) {
+        .bottom-panel {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .panel-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 22px;
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow);
+        animation: fadeUp 0.6s ease 0.15s both;
+      }
+      .panel-title {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-dim);
+        margin-bottom: 14px;
+      }
+
+      /* ── SELECTED DAY DETAIL ── */
+      .sel-date {
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        margin-bottom: 4px;
+      }
+      .sel-weather-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .sel-icon {
+        font-size: 2rem;
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      .sel-temp {
+        font-family: "DM Serif Display", serif;
+        font-size: 2.5rem;
+      }
+      .sel-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+      .sel-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .sel-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .sel-stat-label {
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-dim);
+      }
+      .sel-stat-val {
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+      .sel-suggest {
+        margin-top: 14px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50px;
+        padding: 7px 14px;
+        font-size: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* ── EVENTS ── */
+      .add-event-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .event-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 9px 16px;
+        color: #fff;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.85rem;
+        outline: none;
+        transition: background 0.2s;
+      }
+      .event-input::placeholder {
+        color: var(--text-dim);
+      }
+      .event-input:focus {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.35);
+      }
+
+      .add-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        border-radius: 50px;
+        padding: 9px 16px;
+        font-size: 0.85rem;
+        font-family: "DM Sans", sans-serif;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+      }
+      .add-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .events-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .event-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-xs);
+        font-size: 0.85rem;
+        animation: fadeUp 0.3s ease both;
+      }
+      .event-item-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .event-color {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .event-del {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 2px 6px;
+        border-radius: 6px;
+        transition:
+          color 0.2s,
+          background 0.2s;
+      }
+      .event-del:hover {
+        color: #ff6b6b;
+        background: rgba(255, 80, 80, 0.12);
+      }
+      .no-events {
+        color: var(--text-dim);
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      /* ── MINI WEATHER STRIP ── */
+      .week-strip {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+      }
+      .week-strip::-webkit-scrollbar {
+        display: none;
+      }
+      .week-day-item {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 10px 12px;
+        min-width: 52px;
+        font-size: 0.78rem;
+        transition: background 0.2s;
+        cursor: pointer;
+      }
+      .week-day-item:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .week-day-item.today-week {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(255, 255, 255, 0.35);
+      }
+      .week-day-name {
+        color: var(--text-dim);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .week-day-num {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .week-day-icon {
+        font-size: 1.1rem;
+      }
+      .week-day-temp {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: rgba(60, 200, 120, 0.9);
+        backdrop-filter: blur(12px);
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        z-index: 400;
+        transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        white-space: nowrap;
+      }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Event color picker */
+      .color-dots {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      .color-choice {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition:
+          transform 0.15s,
+          border-color 0.15s;
+      }
+      .color-choice:hover {
+        transform: scale(1.2);
+      }
+      .color-choice.active {
+        border-color: rgba(255, 255, 255, 0.8);
+        transform: scale(1.15);
+      }
+
+      @media (max-width: 500px) {
+        .month-header {
+          padding: 20px 16px 14px;
+        }
+        .cal-grid {
+          padding: 6px 8px 14px;
+        }
+        .day-cell {
+          min-height: 70px;
+          padding: 7px 4px 5px;
+          margin: 2px;
+        }
+        .day-icon {
+          font-size: 1rem;
+        }
+        .app-wrapper {
+          padding: 16px 12px 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas-bg"></canvas>
+    <div class="sun-glow"></div>
+    <div class="toast" id="toast"></div>
+
+    <div class="app-wrapper">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="logo">☁ Aether <span>Calendar</span></div>
+        <div class="header-right">
+          <button class="today-btn" onclick="goToday()">Today</button>
+          <button
+            class="icon-btn"
+            title="Weather App"
+            onclick="window.location = 'weather-app.html'"
+            style="font-size: 0.85rem"
+          >
+            ⛅
+          </button>
+        </div>
+      </div>
+
+      <!-- CALENDAR CARD -->
+      <div class="calendar-card">
+        <!-- Month Nav -->
+        <div class="month-header">
+          <div
+            class="mood-items"
+            id="mood-legend"
+            style="
+              display: flex;
+              gap: 12px;
+              flex-wrap: wrap;
+              font-size: 0.75rem;
+              color: var(--text-muted);
+            "
+          >
+            <span id="month-weather-desc">☀️ Warm and sunny month</span>
+          </div>
+          <div class="month-nav">
+            <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+            <div style="text-align: center">
+              <div class="month-label" id="month-label">
+                June <span class="year-label">2025</span>
+              </div>
+            </div>
+            <button class="nav-btn" onclick="changeMonth(1)">›</button>
+          </div>
+        </div>
+
+        <!-- Day Headers -->
+        <div class="day-headers">
+          <div class="day-header-cell weekend">Sun</div>
+          <div class="day-header-cell">Mon</div>
+          <div class="day-header-cell">Tue</div>
+          <div class="day-header-cell">Wed</div>
+          <div class="day-header-cell">Thu</div>
+          <div class="day-header-cell">Fri</div>
+          <div class="day-header-cell weekend">Sat</div>
+        </div>
+
+        <!-- Grid -->
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+
+      <!-- BOTTOM PANELS -->
+      <div class="bottom-panel">
+        <!-- Selected Day -->
+        <div class="panel-card">
+          <div class="panel-title">📅 Selected Day</div>
+          <div id="day-detail">
+            <div class="sel-date" id="sel-date">—</div>
+            <div class="sel-weather-row">
+              <div class="sel-icon" id="sel-icon">🌤</div>
+              <div>
+                <div class="sel-temp" id="sel-temp">—</div>
+                <div class="sel-label" id="sel-label">
+                  Click a day to explore
+                </div>
+              </div>
+            </div>
+            <div class="sel-stats">
+              <div class="sel-stat">
+                <div class="sel-stat-label">💧 Humidity</div>
+                <div class="sel-stat-val" id="sel-humidity">—</div>
+              </div>
+              <div class="sel-stat">
+                <div class="sel-stat-label">💨 Wind</div>
+                <div class="sel-stat-val" id="sel-wind">—</div>
+              </div>
+              <div class="sel-stat">
+                <div class="sel-stat-label">🌡 Feels Like</div>
+                <div class="sel-stat-val" id="sel-feels">—</div>
+              </div>
+              <div class="sel-stat">
+                <div class="sel-stat-label">☀️ UV Index</div>
+                <div class="sel-stat-val" id="sel-uv">—</div>
+              </div>
+            </div>
+            <div
+              class="sel-suggest"
+              id="sel-suggest"
+              style="display: none"
+            ></div>
+          </div>
+
+          <!-- Week strip -->
+          <div
+            style="
+              margin-top: 18px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(255, 255, 255, 0.1);
+            "
+          >
+            <div class="panel-title">🗓 This Week</div>
+            <div class="week-strip" id="week-strip"></div>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="panel-card">
+          <div class="panel-title">✨ Events</div>
+          <div class="color-dots" id="color-dots"></div>
+          <div class="add-event-row">
+            <input
+              class="event-input"
+              id="event-input"
+              type="text"
+              placeholder="Add event for selected day…"
+              maxlength="60"
+            />
+            <button class="add-btn" onclick="addEvent()">+ Add</button>
+          </div>
+          <div class="events-list" id="events-list">
+            <div class="no-events">
+              No events yet. Select a day and add one!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ══════════════════════════════════════════════
+      // STATE
+      // ══════════════════════════════════════════════
+      const today = new Date();
+      let viewYear = today.getFullYear();
+      let viewMonth = today.getMonth(); // 0-based
+      let selectedDate = null;
+      let selectedColor = "#7ec8e3";
+      let events = JSON.parse(
+        localStorage.getItem("aether_cal_events") || "{}",
+      );
+
+      // ══════════════════════════════════════════════
+      // WEATHER DATA ENGINE (seeded pseudo-random per date)
+      // ══════════════════════════════════════════════
+      const weatherTypes = [
+        {
+          icon: "☀️",
+          label: "Sunny",
+          mood: "sunny",
+          hiRange: [28, 36],
+          loRange: [22, 27],
+          humidity: [40, 60],
+          wind: [5, 15],
+          uv: [7, 10],
+          suggest: "🌞 Perfect day to be outside!",
+        },
+        {
+          icon: "⛅",
+          label: "Partly Cloudy",
+          mood: "cloudy",
+          hiRange: [24, 30],
+          loRange: [18, 23],
+          humidity: [50, 65],
+          wind: [8, 18],
+          uv: [4, 7],
+          suggest: "🌤 Nice day, light jacket optional",
+        },
+        {
+          icon: "☁️",
+          label: "Overcast",
+          mood: "cloudy",
+          hiRange: [20, 26],
+          loRange: [15, 20],
+          humidity: [60, 75],
+          wind: [10, 20],
+          uv: [2, 4],
+          suggest: "🎧 Good day for a museum or café",
+        },
+        {
+          icon: "🌦️",
+          label: "Light Rain",
+          mood: "rain",
+          hiRange: [18, 24],
+          loRange: [14, 18],
+          humidity: [75, 88],
+          wind: [12, 22],
+          uv: [1, 3],
+          suggest: "☂️ Bring an umbrella today",
+        },
+        {
+          icon: "🌧️",
+          label: "Rainy",
+          mood: "rain",
+          hiRange: [16, 22],
+          loRange: [12, 16],
+          humidity: [85, 95],
+          wind: [15, 28],
+          uv: [1, 2],
+          suggest: "🏠 Great day to stay cozy indoors",
+        },
+        {
+          icon: "⛈️",
+          label: "Thunderstorm",
+          mood: "thunder",
+          hiRange: [18, 24],
+          loRange: [14, 18],
+          humidity: [88, 98],
+          wind: [25, 45],
+          uv: [1, 2],
+          suggest: "⚡ Stay safe — stay indoors!",
+        },
+        {
+          icon: "❄️",
+          label: "Snowy",
+          mood: "snow",
+          hiRange: [0, 5],
+          loRange: [-5, 0],
+          humidity: [70, 85],
+          wind: [10, 20],
+          uv: [2, 4],
+          suggest: "🧤 Bundle up, it's winter outside",
+        },
+        {
+          icon: "🌫️",
+          label: "Foggy",
+          mood: "cloudy",
+          hiRange: [15, 20],
+          loRange: [10, 15],
+          humidity: [80, 95],
+          wind: [3, 8],
+          uv: [1, 3],
+          suggest: "🌫️ Visibility low — drive carefully",
+        },
+      ];
+
+      // Month-biased weather (index into weatherTypes)
+      const monthWeatherBias = {
+        0: [1, 2, 2, 2, 6, 6], // Jan
+        1: [1, 1, 2, 2, 6, 6], // Feb
+        2: [0, 1, 1, 2, 3, 3], // Mar
+        3: [0, 0, 1, 1, 3, 3], // Apr
+        4: [0, 0, 0, 1, 3, 4], // May
+        5: [0, 0, 0, 0, 1, 3], // Jun
+        6: [0, 0, 0, 1, 4, 5], // Jul
+        7: [0, 0, 0, 1, 4, 5], // Aug
+        8: [1, 1, 2, 3, 4, 4], // Sep
+        9: [1, 2, 2, 3, 3, 4], // Oct
+        10: [1, 2, 2, 3, 3, 7], // Nov
+        11: [1, 2, 6, 6, 6, 7], // Dec
+      };
+
+      function seededRand(seed) {
+        let s = seed;
+        return function () {
+          s = (s * 1664525 + 1013904223) & 0xffffffff;
+          return (s >>> 0) / 4294967295;
+        };
+      }
+
+      function getWeatherForDate(year, month, day) {
+        const seed = year * 10000 + month * 100 + day;
+        const rng = seededRand(seed);
+        const bias = monthWeatherBias[month];
+        const idx = bias[Math.floor(rng() * bias.length)];
+        const w = weatherTypes[idx];
+        const r2 = rng(),
+          r3 = rng(),
+          r4 = rng(),
+          r5 = rng(),
+          r6 = rng();
+        const hi = Math.round(
+          w.hiRange[0] + r2 * (w.hiRange[1] - w.hiRange[0]),
+        );
+        const lo = Math.round(
+          w.loRange[0] + r3 * (w.loRange[1] - w.loRange[0]),
+        );
+        const humidity = Math.round(
+          w.humidity[0] + r4 * (w.humidity[1] - w.humidity[0]),
+        );
+        const wind = Math.round(w.wind[0] + r5 * (w.wind[1] - w.wind[0]));
+        const uv = Math.round(w.uv[0] + r6 * (w.uv[1] - w.uv[0]));
+        const feels = Math.round(hi - (wind > 20 ? 3 : 1));
+        return {
+          icon: w.icon,
+          label: w.label,
+          mood: w.mood,
+          hi,
+          lo,
+          humidity,
+          wind,
+          uv,
+          feels,
+          suggest: w.suggest,
+        };
+      }
+
+      // ══════════════════════════════════════════════
+      // MONTH BG & DESCRIPTIONS
+      // ══════════════════════════════════════════════
+      const monthBgVars = [
+        "--bg-jan",
+        "--bg-feb",
+        "--bg-mar",
+        "--bg-apr",
+        "--bg-may",
+        "--bg-jun",
+        "--bg-jul",
+        "--bg-aug",
+        "--bg-sep",
+        "--bg-oct",
+        "--bg-nov",
+        "--bg-dec",
+      ];
+      const monthDescs = [
+        "❄️ Cold winter days — stay warm",
+        "🌸 Love is in the air — and chill",
+        "🌱 Spring is waking up",
+        "🌼 Blossoms and gentle rains",
+        "🌿 Warming up beautifully",
+        "☀️ Warm and sunny month",
+        "🔥 Peak summer heat",
+        "🌊 Hot days, summer vibes",
+        "🍂 Autumn begins to glow",
+        "🍁 Golden leaves and crisp air",
+        "🌧 Grey skies, cozy indoors",
+        "⛄ Festive cold and winter magic",
+      ];
+
+      function applyMonthTheme(month) {
+        const bg = getComputedStyle(document.documentElement)
+          .getPropertyValue(monthBgVars[month])
+          .trim();
+        document.body.style.background = bg;
+        document.getElementById("month-weather-desc").textContent =
+          monthDescs[month];
+      }
+
+      // ══════════════════════════════════════════════
+      // RENDER CALENDAR
+      // ══════════════════════════════════════════════
+      const MONTH_NAMES = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const DAY_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+      function renderCalendar() {
+        applyMonthTheme(viewMonth);
+
+        // Month label
+        document.getElementById("month-label").innerHTML =
+          `${MONTH_NAMES[viewMonth]} <span class="year-label">${viewYear}</span>`;
+
+        const grid = document.getElementById("cal-grid");
+        grid.innerHTML = "";
+
+        const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+        const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+        const daysInPrev = new Date(viewYear, viewMonth, 0).getDate();
+
+        const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+
+        for (let i = 0; i < totalCells; i++) {
+          const cell = document.createElement("div");
+          cell.className = "day-cell";
+
+          let day,
+            month,
+            year,
+            isOther = false;
+
+          if (i < firstDay) {
+            day = daysInPrev - firstDay + i + 1;
+            month = viewMonth - 1;
+            year = viewYear;
+            if (month < 0) {
+              month = 11;
+              year--;
+            }
+            isOther = true;
+          } else if (i >= firstDay + daysInMonth) {
+            day = i - firstDay - daysInMonth + 1;
+            month = viewMonth + 1;
+            year = viewYear;
+            if (month > 11) {
+              month = 0;
+              year++;
+            }
+            isOther = true;
+          } else {
+            day = i - firstDay + 1;
+            month = viewMonth;
+            year = viewYear;
+          }
+
+          const isToday =
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear();
+          const isSelected =
+            selectedDate &&
+            day === selectedDate.day &&
+            month === selectedDate.month &&
+            year === selectedDate.year;
+          const isWeekend = i % 7 === 0 || i % 7 === 6;
+
+          if (isOther) cell.classList.add("other-month");
+          if (isToday) cell.classList.add("today");
+          if (isSelected) cell.classList.add("selected");
+          if (isWeekend) cell.classList.add("weekend-col");
+
+          const w = getWeatherForDate(year, month, day);
+          cell.classList.add(`mood-${w.mood}`);
+
+          // Event dots
+          const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+          const dayEvents = events[dateKey] || [];
+          const dotHtml = dayEvents
+            .slice(0, 3)
+            .map(
+              (e) =>
+                `<div class="event-dot" style="background:${e.color}"></div>`,
+            )
+            .join("");
+
+          cell.innerHTML = `
+      <div class="day-num">${day}</div>
+      <div class="day-weather">
+        <div class="day-icon">${isOther ? "" : w.icon}</div>
+        <div class="day-temp"><span class="hi">${isOther ? "" : w.hi + "°"}</span>${isOther ? "" : "/" + w.lo + "°"}</div>
+      </div>
+      ${dotHtml ? `<div class="event-dots">${dotHtml}</div>` : ""}
+    `;
+
+          cell.addEventListener("click", () => selectDay(day, month, year));
+          grid.appendChild(cell);
+        }
+
+        renderWeekStrip();
+        if (selectedDate)
+          renderDayDetail(
+            selectedDate.day,
+            selectedDate.month,
+            selectedDate.year,
+          );
+      }
+
+      // ══════════════════════════════════════════════
+      // SELECT DAY
+      // ══════════════════════════════════════════════
+      function selectDay(day, month, year) {
+        selectedDate = { day, month, year };
+        renderCalendar();
+        renderDayDetail(day, month, year);
+        renderEventsList();
+      }
+
+      function renderDayDetail(day, month, year) {
+        const w = getWeatherForDate(year, month, day);
+        const d = new Date(year, month, day);
+        const dayName = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ][d.getDay()];
+
+        document.getElementById("sel-date").textContent =
+          `${dayName}, ${MONTH_NAMES[month].slice(0, 3)} ${day}`;
+        document.getElementById("sel-icon").textContent = w.icon;
+        document.getElementById("sel-temp").textContent = `${w.hi}°`;
+        document.getElementById("sel-label").textContent = w.label;
+        document.getElementById("sel-humidity").textContent = `${w.humidity}%`;
+        document.getElementById("sel-wind").textContent = `${w.wind} km/h`;
+        document.getElementById("sel-feels").textContent = `${w.feels}°C`;
+        document.getElementById("sel-uv").textContent = w.uv;
+
+        const sug = document.getElementById("sel-suggest");
+        sug.style.display = "inline-flex";
+        sug.textContent = w.suggest;
+      }
+
+      // ══════════════════════════════════════════════
+      // WEEK STRIP
+      // ══════════════════════════════════════════════
+      function renderWeekStrip() {
+        const strip = document.getElementById("week-strip");
+        strip.innerHTML = "";
+        // Show current week
+        const monday = new Date(today);
+        monday.setDate(today.getDate() - today.getDay());
+        for (let i = 0; i < 7; i++) {
+          const d = new Date(monday);
+          d.setDate(monday.getDate() + i);
+          const w = getWeatherForDate(
+            d.getFullYear(),
+            d.getMonth(),
+            d.getDate(),
+          );
+          const isT = d.toDateString() === today.toDateString();
+          const el = document.createElement("div");
+          el.className = `week-day-item${isT ? " today-week" : ""}`;
+          el.innerHTML = `
+      <div class="week-day-name">${DAY_SHORT[d.getDay()]}</div>
+      <div class="week-day-num">${d.getDate()}</div>
+      <div class="week-day-icon">${w.icon}</div>
+      <div class="week-day-temp">${w.hi}°</div>
+    `;
+          el.addEventListener("click", () =>
+            selectDay(d.getDate(), d.getMonth(), d.getFullYear()),
+          );
+          strip.appendChild(el);
+        }
+      }
+
+      // ══════════════════════════════════════════════
+      // EVENTS
+      // ══════════════════════════════════════════════
+      const eventColors = [
+        "#7ec8e3",
+        "#f4a261",
+        "#a8e6cf",
+        "#f7c59f",
+        "#e8a0bf",
+        "#b5ead7",
+        "#ff9aa2",
+        "#ffdac1",
+      ];
+
+      function renderColorPicker() {
+        const el = document.getElementById("color-dots");
+        el.innerHTML = eventColors
+          .map(
+            (c) =>
+              `<div class="color-choice${selectedColor === c ? " active" : ""}" style="background:${c}" onclick="selectColor('${c}')"></div>`,
+          )
+          .join("");
+      }
+
+      function selectColor(c) {
+        selectedColor = c;
+        renderColorPicker();
+      }
+
+      function getDateKey(d) {
+        if (!d) return null;
+        return `${d.year}-${String(d.month + 1).padStart(2, "0")}-${String(d.day).padStart(2, "0")}`;
+      }
+
+      function addEvent() {
+        const input = document.getElementById("event-input");
+        const text = input.value.trim();
+        if (!text) {
+          showToast("⚠️ Type an event name first");
+          return;
+        }
+        if (!selectedDate) {
+          showToast("📅 Select a day first");
+          return;
+        }
+        const key = getDateKey(selectedDate);
+        if (!events[key]) events[key] = [];
+        events[key].push({ text, color: selectedColor, id: Date.now() });
+        saveEvents();
+        input.value = "";
+        renderEventsList();
+        renderCalendar();
+        showToast("✓ Event added!");
+      }
+
+      function deleteEvent(key, id) {
+        events[key] = (events[key] || []).filter((e) => e.id !== id);
+        if (!events[key].length) delete events[key];
+        saveEvents();
+        renderEventsList();
+        renderCalendar();
+      }
+
+      function renderEventsList() {
+        const list = document.getElementById("events-list");
+        if (!selectedDate) {
+          list.innerHTML =
+            '<div class="no-events">No events yet. Select a day and add one!</div>';
+          return;
+        }
+        const key = getDateKey(selectedDate);
+        const evs = events[key] || [];
+        if (!evs.length) {
+          const d = selectedDate;
+          const name = `${MONTH_NAMES[d.month].slice(0, 3)} ${d.day}`;
+          list.innerHTML = `<div class="no-events">No events on ${name}</div>`;
+          return;
+        }
+        list.innerHTML = evs
+          .map(
+            (e) => `
+    <div class="event-item">
+      <div class="event-item-left">
+        <div class="event-color" style="background:${e.color}"></div>
+        <span>${e.text}</span>
+      </div>
+      <button class="event-del" onclick="deleteEvent('${getDateKey(selectedDate)}',${e.id})">✕</button>
+    </div>
+  `,
+          )
+          .join("");
+      }
+
+      function saveEvents() {
+        localStorage.setItem("aether_cal_events", JSON.stringify(events));
+      }
+
+      document
+        .getElementById("event-input")
+        .addEventListener("keydown", (e) => {
+          if (e.key === "Enter") addEvent();
+        });
+
+      // ══════════════════════════════════════════════
+      // NAVIGATION
+      // ══════════════════════════════════════════════
+      function changeMonth(dir) {
+        viewMonth += dir;
+        if (viewMonth > 11) {
+          viewMonth = 0;
+          viewYear++;
+        }
+        if (viewMonth < 0) {
+          viewMonth = 11;
+          viewYear--;
+        }
+        renderCalendar();
+      }
+
+      function goToday() {
+        viewYear = today.getFullYear();
+        viewMonth = today.getMonth();
+        selectDay(today.getDate(), today.getMonth(), today.getFullYear());
+      }
+
+      // ══════════════════════════════════════════════
+      // ANIMATED BACKGROUND CANVAS
+      // ══════════════════════════════════════════════
+      (function () {
+        const canvas = document.getElementById("canvas-bg");
+        const ctx = canvas.getContext("2d");
+        let orbs = [];
+        function resize() {
+          canvas.width = innerWidth;
+          canvas.height = innerHeight;
+        }
+        window.addEventListener("resize", resize);
+        resize();
+        for (let i = 0; i < 5; i++) {
+          orbs.push({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            r: Math.random() * 220 + 100,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+          });
+        }
+        function loop() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          orbs.forEach((o) => {
+            const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+            g.addColorStop(0, "rgba(255,255,255,0.04)");
+            g.addColorStop(1, "rgba(255,255,255,0)");
+            ctx.beginPath();
+            ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+            ctx.fillStyle = g;
+            ctx.fill();
+            o.x += o.vx;
+            o.y += o.vy;
+            if (o.x < -o.r) o.x = canvas.width + o.r;
+            if (o.x > canvas.width + o.r) o.x = -o.r;
+            if (o.y < -o.r) o.y = canvas.height + o.r;
+            if (o.y > canvas.height + o.r) o.y = -o.r;
+          });
+          requestAnimationFrame(loop);
+        }
+        loop();
+      })();
+
+      // ══════════════════════════════════════════════
+      // TOAST
+      // ══════════════════════════════════════════════
+      function showToast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 2800);
+      }
+
+      // ══════════════════════════════════════════════
+      // INIT
+      // ══════════════════════════════════════════════
+      renderColorPicker();
+      viewYear = today.getFullYear();
+      viewMonth = today.getMonth();
+      renderCalendar();
+      // Auto-select today
+      selectDay(today.getDate(), today.getMonth(), today.getFullYear());
+    </script>
+  </body>
+</html>

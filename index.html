@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Slabo+13px&family=Vidaloka&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="IMG/Favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>McWeather</title>
+  </head>
+  <body class="day">
+    <div id="stars-overlay"></div>
+    <div id="rain-overlay"></div>
+    <div class="container">
+      <div class="weatherforecast">
+        <nav>
+          <div class="logo">McWeather</div>
+          <div class="search">
+            <div class="searchBtn">
+              <input
+                type="search"
+                name=""
+                id="search"
+                placeholder="Search for your city..."
+              />
+              <button><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+          <div class="themeToggle">
+            <button id="dayBtn" onclick="dayNight('day')" class="active">
+              Day
+            </button>
+            <button id="nightBtn" onclick="dayNight('night')">Night</button>
+          </div>
+          <div class="saved"><button>☆</button></div>
+        </nav>
+        <div class="weatherDisplay">
+          <div class="cityLine">
+            <div class="cityLabel">
+              <div class="country">
+                <i class="fa-solid fa-location-dot"></i
+                ><span class="city">Yangon</span>
+              </div>
+              <!-- <div class="time">2026-3-22 2:00 AM - GMT + 6:30</div> -->
+            </div>
+            <div class="saveBtn"><button>☆</button></div>
+          </div>
+          <div class="weather"></div>
+          <div class="suggestionGroup">
+            <div class="suggestion">
+              Mellow day — perfect for a museum visit
+            </div>
+            <div class="suggestion">Light clothing, maybe sunglasses</div>
+          </div>
+          <hr />
+          <div class="stats">
+            <div class="stat">
+              <div class="statLabel">Humidity</div>
+              <div class="estHumidity"></div>
+            </div>
+            <div class="stat">
+              <div class="statLabel">Average Temperature</div>
+              <div class="avgTemp"></div>
+            </div>
+            <div class="stat">
+              <div id="wind-card"></div>
+            </div>
+          </div>
+        </div>
+        <div class="hourlyForecast">
+          <div class="hourlyforecast">
+            <div class="hfTitle">Hourly Forecast</div>
+            <div class="hForecastCards"></div>
+          </div>
+        </div>
+        <div class="placeSuggestionCard">
+          <div class="psTitle">Famous Place to visit</div>
+          <div class="psCards"></div>
+        </div>
+      </div>
+      <!-- <div class="calendar">
+        <div class="calendarCard">
+          Month Nav
+          <div class="monthHeader">
+            <button class="prevM" onclick="changeMonth(-1)">‹</button>
+            <div class="curM">
+              <div class="monthLabel" id="month-label">
+                <span class="yearLabel"></span>
+              </div>
+            </div>
+            <button class="nextM" onclick="changeMonth(1)">›</button>
+          </div>
+
+          Day Headers
+          <div class="dayHeaders">
+            <div class="dayHeaderCell weekend">Sun</div>
+            <div class="dayHeaderCell">Mon</div>
+            <div class="dayHeaderCell">Tue</div>
+            <div class="dayHeaderCell">Wed</div>
+            <div class="dayHeaderCell">Thu</div>
+            <div class="dayHeaderCell">Fri</div>
+            <div class="dayHeaderCell weekend">Sat</div>
+          </div>
+
+          <hr
+            style="
+              border: 1px solid rgba(255, 255, 255, 0.407);
+              margin-top: 10px;
+            "
+          />
+          Grid
+          <div class="calGrid" id="calGrid"></div>
+        </div>
+      </div> -->
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
