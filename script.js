@@ -323,6 +323,8 @@ window.onload = function () {
   const lastCity = localStorage.getItem("lastCity");
   if (lastCity) {
     searchCity(lastCity);
+  } else {
+    fetchWeather();
   }
 
   // Reload the website when search button is clicked
