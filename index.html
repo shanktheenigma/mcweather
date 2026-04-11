@@ -20,6 +20,19 @@
     <title>McWeather</title>
   </head>
   <body class="day">
+    <div class="loadingOverlay" id="loading-overlay">
+      <div class="spinner"></div>
+      <div class="loadingText">Getting things ready...</div>
+    </div>
+    <div class="savedOverlay" id="savedOverlay">
+      <div class="savedPanel">
+        <div class="savedPanelHeader">
+          <div class="savedPanelTitle">Saved locations</div>
+          <button class="savedCloseBtn" id="savedCloseBtn">&#x2715;</button>
+        </div>
+        <div class="savedCards" id="savedCards"></div>
+      </div>
+    </div>
     <div id="stars-overlay"></div>
     <div id="rain-overlay"></div>
     <div class="container">
@@ -43,17 +56,17 @@
             </button>
             <button id="nightBtn" onclick="dayNight('night')">Night</button>
           </div>
-          <div class="saved"><button>☆</button></div>
+          <div class="saved"><button>Saved</button></div>
         </nav>
         <div class="weatherDisplay">
           <div class="cityLine">
             <div class="cityLabel">
               <div class="country">
                 <i class="fa-solid fa-location-dot"></i
-                ><span class="city">Yangon, Myanmar</span>
+                ><span class="city">Berlin, Germany</span>
               </div>
             </div>
-            <div class="saveBtn"><button>☆</button></div>
+            <div class="saveBtn"><button>Save</button></div>
           </div>
           <div class="weather"></div>
           <div class="suggestionGroup">
@@ -82,6 +95,28 @@
             <div class="hfTitle">Hourly Forecast</div>
             <div class="hForecastCards"></div>
           </div>
+        </div>
+        <div class="weeklyForecast">
+          <div class="weeklyHeader">
+            <div class="wfTitle">Weekly Forecast</div>
+            <div class="wfNav">
+              <button class="wfNavBtn" id="prevMonth">&#8249;</button>
+              <div class="wfMonthLabel" id="wfMonthLabel"></div>
+              <button class="wfNavBtn" id="nextMonth">&#8250;</button>
+            </div>
+          </div>
+          <div class="wfDayHeaders">
+            <div class="wfDayHeader">Sun</div>
+            <div class="wfDayHeader">Mon</div>
+            <div class="wfDayHeader">Tue</div>
+            <div class="wfDayHeader">Wed</div>
+            <div class="wfDayHeader">Thu</div>
+            <div class="wfDayHeader">Fri</div>
+            <div class="wfDayHeader">Sat</div>
+          </div>
+          <div id="wfGrid"></div>
+          <div class="wfWeekTabs" id="wfWeekTabs"></div>
+          <div class="wfPagination" id="wfPagination"></div>
         </div>
         <div class="placeSuggestionCard">
           <div class="psTitle">Famous Place to visit</div>

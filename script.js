@@ -1,3 +1,4 @@
+//Remember to add time
 let geoCodingAPI = "https://geocoding-api.open-meteo.com/v1/search";
 let weatherAPI =
   "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m,wind_direction_10m&current=temperature_2m,is_day,relative_humidity_2m,rain,snowfall,weather_code,wind_speed_10m,wind_direction_10m&minutely_15=temperature_2m,relative_humidity_2m,rain,weather_code,wind_speed_10m,wind_direction_10m,is_day";
@@ -103,6 +104,7 @@ function hourlyInfo(code) {
 
 // Converting the cityname into latitude and longitude, and replace in the weather URL
 async function searchCity(cityName) {
+  load(true);
   try {
     const cityResult = await fetch(
       `${geoCodingAPI}?name=${encodeURIComponent(cityName)}&count=1&language=en&format=json`,
@@ -136,16 +138,22 @@ async function searchCity(cityName) {
     console.error("Search error:", err);
     alert("Could not find weather for that city.");
   }
+  load(false);
 }
 
-// handlding Searches
+// Handling Searches
 function handleSearch() {
   const input = document.getElementById("search");
   const city = input.value.trim();
   if (city) searchCity(city);
 }
 
-// Renderng weather
+//Loading handler
+function load(visible) {
+  document.getElementById("loading-overlay").classList.toggle("show", visible);
+}
+
+// Rendering weather
 function renderWeather(data) {
   const c = data.current;
   const humidity = c.relative_humidity_2m;
@@ -162,6 +170,42 @@ function renderWeather(data) {
 
   updateEffects(mood);
 
+  //Save action
+  const saveBtn = document.querySelector(".saveBtn button");
+  if (saveBtn) {
+    saveBtn.onclick = () => {
+      const cityEl = document.querySelector(".city");
+      const cityText = cityEl ? cityEl.innerText : "Unknown";
+      const now = new Date();
+      const timeStr = now.toLocaleString("en", {
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      const entry = {
+        city: cityText,
+        cityRaw: cityText.split(",")[0].trim(),
+        time: timeStr,
+        temp: `${currentTemp}°C`,
+        label: wInfo.label,
+        icon: wInfo.icon,
+      };
+
+      const arr = getSaved();
+      const alreadySaved = arr.some((s) => s.city === cityText);
+      if (!alreadySaved) {
+        arr.unshift(entry);
+        setSaved(arr);
+        saveBtn.textContent = "Saved";
+        setTimeout(() => (saveBtn.textContent = "Save"), 2000);
+      } else {
+        saveBtn.textContent = "Already saved";
+        setTimeout(() => (saveBtn.textContent = "Save"), 2000);
+      }
+    };
+  }
+
   // Current Temperature
   const currentEl = document.getElementById("currentTemp");
   if (currentEl) currentEl.innerText = `${currentTemp}°C`;
@@ -169,13 +213,41 @@ function renderWeather(data) {
   const weather = document.querySelector(".weather");
   if (weather) {
     weather.innerHTML = `
-      <div class="estWeather">${wInfo.label}</div>
-      <div class="estTemp">
+    <div class="currentTime" id="currentTime"></div>
+     <div class="estTemp">
         ${currentTemp}°C 
         <img class="weatherIcon" 
        src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${wInfo.icon}.svg">
       </div>
+      
+      <div class="estWeather">${wInfo.label}</div>
     `;
+
+    if (window._clockInterval) clearInterval(window._clockInterval);
+
+    function updateClock() {
+      const el = document.getElementById("currentTime");
+      if (!el) {
+        clearInterval(window._clockInterval);
+        return;
+      }
+      const now = new Date();
+      const day = now.toLocaleString("en", { weekday: "long" });
+      const date = now.toLocaleString("en", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+      const time = now.toLocaleString("en", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      el.textContent = `${day}, ${date} · ${time}`;
+    }
+
+    updateClock();
+    window._clockInterval = setInterval(updateClock, 1000);
   }
 
   // Humidity
@@ -236,13 +308,144 @@ function renderWeather(data) {
   `;
 
     hourlyF.append(hCard);
+    renderWeeklyForecast(data.daily);
   }
 
   setTimeout(() => initWindCanvas(windSpeed, windDir), 50);
 }
 
+// Calling current location
+async function currentLocation() {
+  return new Promise((resolve) => {
+    if (!navigator.geolocation) {
+      fetchWeather().then(resolve);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude.toFixed(2);
+        const lng = position.coords.longitude.toFixed(2);
+
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`,
+          );
+          const data = await res.json();
+          const address = data.address;
+
+          const city =
+            address.city ||
+            address.town ||
+            address.municipality ||
+            address.county;
+
+          const cityEl = document.querySelector(".city");
+          if (cityEl) cityEl.innerText = `${city}, ${address.country}`;
+
+          if (city) localStorage.setItem("lastCity", city);
+        } catch (err) {
+          console.error("Reverse geocoding failed:", err);
+        }
+
+        // Update weather API URL with real coordinates and fetch
+        weatherAPI =
+          `https://api.open-meteo.com/v1/forecast` +
+          `?latitude=${lat}&longitude=${lng}` +
+          `&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_direction_10m_dominant` +
+          `&hourly=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m,wind_direction_10m` +
+          `&current=temperature_2m,is_day,relative_humidity_2m,rain,snowfall,weather_code,wind_speed_10m,wind_direction_10m` +
+          `&minutely_15=temperature_2m,relative_humidity_2m,rain,weather_code,wind_speed_10m,wind_direction_10m,is_day`;
+
+        await fetchWeather();
+        resolve();
+      },
+      async (err) => {
+        console.warn("Geolocation denied or failed:", err.message);
+        await fetchWeather();
+        resolve();
+      },
+      { timeout: 8000 },
+    );
+  });
+}
+
+function getSaved() {
+  try {
+    return JSON.parse(localStorage.getItem("savedLocations")) || [];
+  } catch {
+    return [];
+  }
+}
+
+function setSaved(arr) {
+  localStorage.setItem("savedLocations", JSON.stringify(arr));
+}
+
+function renderSavedCards() {
+  const saved = getSaved();
+  const el = document.getElementById("savedCards");
+  if (!el) return;
+
+  if (!saved.length) {
+    el.innerHTML =
+      '<div class="savedEmpty">No saved locations yet.<br>Hit Save on any city to add it here.</div>';
+    return;
+  }
+
+  el.innerHTML = "";
+  saved.forEach((s, i) => {
+    const card = document.createElement("div");
+    card.className = "savedCard";
+    card.innerHTML = `
+  <div class="savedCardLeft">
+    <div class="savedCardCity">${s.city}</div>
+    <div class="savedCardMeta">${s.time}</div>
+    <div class="savedCardBottom">
+      <div class="savedCardTemp">${s.temp}</div>
+      <div class="savedCardLabel">${s.label}</div>
+    </div>
+  </div>
+  <div class="savedCardIcon">
+    <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${s.icon}.svg">
+  </div>
+  <div class="savedCardRight">
+    <button class="savedCardRemove" data-i="${i}">&#x2715;</button>
+  </div>
+`;
+    // Click card body to load that city
+    card.addEventListener("click", (e) => {
+      if (e.target.classList.contains("savedCardRemove")) return;
+      closeSavedOverlay();
+      searchCity(s.cityRaw);
+    });
+    el.appendChild(card);
+  });
+
+  el.querySelectorAll(".savedCardRemove").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const arr = getSaved();
+      arr.splice(+btn.dataset.i, 1);
+      setSaved(arr);
+      renderSavedCards();
+    });
+  });
+}
+
+function openSavedOverlay() {
+  renderSavedCards();
+  document.getElementById("savedOverlay").classList.add("show");
+}
+
+function closeSavedOverlay() {
+  document.getElementById("savedOverlay").classList.remove("show");
+}
+
+//-----------------------------------------------------------------------------------------------
+
 // Fetching API
 async function fetchWeather() {
+  load(true);
   try {
     const response = await fetch(weatherAPI);
     if (!response.ok) throw new Error("Failed to fetch weather data");
@@ -251,6 +454,7 @@ async function fetchWeather() {
   } catch (err) {
     console.error("Error fetching weather:", err);
   }
+  load(false);
 }
 
 // Day Night Toggle
@@ -324,19 +528,31 @@ window.onload = function () {
   if (lastCity) {
     searchCity(lastCity);
   } else {
-    fetchWeather();
+    currentLocation();
   }
 
+  //---------------------------------------------------------------------------------------
   // Reload the website when search button is clicked
   const btn = document.querySelector(".searchBtn button");
   if (btn) btn.addEventListener("click", handleSearch);
 
-  // Reload the website when someone enter the "Enter" after the city is written
+  // Reload the website when someone enters "Enter" after the city is written
   const input = document.getElementById("search");
   if (input)
     input.addEventListener("keydown", (e) => {
       if (e.key === "Enter") handleSearch();
     });
+
+  document
+    .querySelector(".saved button")
+    .addEventListener("click", openSavedOverlay);
+  document
+    .getElementById("savedCloseBtn")
+    .addEventListener("click", closeSavedOverlay);
+  document.getElementById("savedOverlay").addEventListener("click", (e) => {
+    if (e.target === document.getElementById("savedOverlay"))
+      closeSavedOverlay();
+  });
 };
 
 // Star creation (AI generated)
@@ -443,4 +659,242 @@ function animateWind(W, H, vx, vy) {
   });
 
   animFrame = requestAnimationFrame(() => animateWind(W, H, vx, vy));
+}
+
+//-------------------------------------------------------- Weather Forecast (Ai generated)
+function buildAllWeeks(centerYear, centerMonth) {
+  function daysInMonth(y, m) {
+    return new Date(y, m + 1, 0).getDate();
+  }
+
+  function getMonthWeeks(y, m) {
+    const firstDow = new Date(y, m, 1).getDay();
+    const total = daysInMonth(y, m);
+    const prevM = m === 0 ? 11 : m - 1,
+      prevY = m === 0 ? y - 1 : y;
+    const nextM = m === 11 ? 0 : m + 1,
+      nextY = m === 11 ? y + 1 : y;
+    const prevTotal = daysInMonth(prevY, prevM);
+    const cells = [];
+    for (let i = firstDow - 1; i >= 0; i--)
+      cells.push({
+        day: prevTotal - i,
+        month: prevM,
+        year: prevY,
+        overflow: true,
+      });
+    for (let d = 1; d <= total; d++)
+      cells.push({ day: d, month: m, year: y, overflow: false });
+    const rem = cells.length % 7;
+    if (rem !== 0)
+      for (let d = 1; d <= 7 - rem; d++)
+        cells.push({ day: d, month: nextM, year: nextY, overflow: true });
+    const weeks = [];
+    for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+    return weeks;
+  }
+
+  function weekLabelMonth(week) {
+    const counts = {};
+    week.forEach((c) => {
+      const k = `${c.year}-${c.month}`;
+      counts[k] = (counts[k] || 0) + 1;
+    });
+    let best = null,
+      bestCount = 0;
+    for (const k in counts) {
+      if (counts[k] > bestCount) {
+        bestCount = counts[k];
+        best = k;
+      }
+    }
+    const [y, m] = best.split("-").map(Number);
+    return { year: y, month: m };
+  }
+
+  const months = [];
+  for (let delta = -1; delta <= 1; delta++) {
+    let m = centerMonth + delta,
+      y = centerYear;
+    if (m < 0) {
+      m += 12;
+      y--;
+    }
+    if (m > 11) {
+      m -= 12;
+      y++;
+    }
+    months.push({ y, m });
+  }
+
+  const seen = new Set(),
+    allWeeks = [];
+  months.forEach(({ y, m }) => {
+    getMonthWeeks(y, m).forEach((week) => {
+      const key = week.map((c) => `${c.year}-${c.month}-${c.day}`).join("|");
+      if (seen.has(key)) return;
+      const label = weekLabelMonth(week);
+      if (label.year === y && label.month === m) {
+        seen.add(key);
+        allWeeks.push({ cells: week, labelYear: y, labelMonth: m });
+      }
+    });
+  });
+  return allWeeks;
+}
+
+function renderWeeklyForecast(daily) {
+  let globalWeeks = [];
+  let globalIndex = 0;
+
+  function iconFor(code) {
+    return hourlyInfo(code).icon;
+  }
+
+  function rebuild(y, m) {
+    globalWeeks = buildAllWeeks(y, m);
+  }
+
+  function maybeRebuild() {
+    const week = globalWeeks[globalIndex];
+    if (!week) return;
+    if (globalIndex === 0 || globalIndex === globalWeeks.length - 1) {
+      const savedKey = week.cells
+        .map((c) => `${c.year}-${c.month}-${c.day}`)
+        .join("|");
+      rebuild(week.labelYear, week.labelMonth);
+      globalIndex = globalWeeks.findIndex(
+        (w) =>
+          w.cells.map((c) => `${c.year}-${c.month}-${c.day}`).join("|") ===
+          savedKey,
+      );
+      if (globalIndex < 0) globalIndex = 0;
+    }
+    document.getElementById("prevMonth").onclick = () => {
+      let m = globalWeeks[globalIndex].labelMonth - 1;
+      let y = globalWeeks[globalIndex].labelYear;
+      if (m < 0) {
+        m = 11;
+        y--;
+      }
+      rebuild(y, m);
+      globalIndex = globalWeeks.findIndex(
+        (w) => w.labelYear === y && w.labelMonth === m,
+      );
+      if (globalIndex < 0) globalIndex = 0;
+      draw();
+    };
+
+    document.getElementById("nextMonth").onclick = () => {
+      let m = globalWeeks[globalIndex].labelMonth + 1;
+      let y = globalWeeks[globalIndex].labelYear;
+      if (m > 11) {
+        m = 0;
+        y++;
+      }
+      rebuild(y, m);
+      globalIndex = globalWeeks.findIndex(
+        (w) => w.labelYear === y && w.labelMonth === m,
+      );
+      if (globalIndex < 0) globalIndex = 0;
+      draw();
+    };
+  }
+
+  function draw() {
+    const week = globalWeeks[globalIndex];
+    if (!week) return;
+    const today = new Date();
+
+    document.getElementById("wfMonthLabel").textContent =
+      new Date(week.labelYear, week.labelMonth).toLocaleString("en", {
+        month: "long",
+      }) +
+      " " +
+      week.labelYear;
+
+    const grid = document.getElementById("wfGrid");
+    grid.innerHTML = "";
+    const row = document.createElement("div");
+    row.className = "wfWeekRow";
+
+    week.cells.forEach(({ day, month, year, overflow }, idx) => {
+      const cell = document.createElement("div");
+      const isToday =
+        year === today.getFullYear() &&
+        month === today.getMonth() &&
+        day === today.getDate();
+      cell.className =
+        "wfDay" + (isToday ? " today" : "") + (overflow ? " overflow" : "");
+
+      const di = Math.min(day - 1, (daily?.weather_code?.length || 1) - 1);
+      const code = daily?.weather_code?.[di] ?? 0;
+      const max = daily?.temperature_2m_max?.[di]?.toFixed(0) ?? "--";
+      const min = daily?.temperature_2m_min?.[di]?.toFixed(0) ?? "--";
+
+      cell.innerHTML = `
+        <div class="wfDayNum">${day}</div>
+        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${iconFor(code)}.svg">
+        <div class="wfTemp">${max}° - ${min}°</div>
+      `;
+      row.appendChild(cell);
+    });
+    grid.appendChild(row);
+
+    // Pagination — only tabs for current label month
+    const curY = week.labelYear,
+      curM = week.labelMonth;
+    const monthWeeks = globalWeeks
+      .map((w, i) => ({ w, i }))
+      .filter(({ w }) => w.labelYear === curY && w.labelMonth === curM);
+
+    const pag = document.getElementById("wfPagination");
+    pag.innerHTML = "";
+
+    monthWeeks.forEach(({ w, i }) => {
+      const btn = document.createElement("button");
+      btn.className = "wfPageBtn" + (i === globalIndex ? " active" : "");
+      const valid = w.cells.filter((c) => !c.overflow);
+      btn.textContent = `${valid[0].day}–${valid[valid.length - 1].day}`;
+      btn.onclick = () => {
+        globalIndex = i;
+        draw();
+      };
+      pag.appendChild(btn);
+    });
+
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "wfPageBtn arrow";
+    prevBtn.innerHTML = "&#8249;";
+    prevBtn.disabled = globalIndex === 0;
+    prevBtn.onclick = () => {
+      globalIndex--;
+      maybeRebuild();
+      draw();
+    };
+    pag.appendChild(prevBtn);
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "wfPageBtn arrow";
+    nextBtn.innerHTML = "&#8250;";
+    nextBtn.disabled = globalIndex === globalWeeks.length - 1;
+    nextBtn.onclick = () => {
+      globalIndex++;
+      maybeRebuild();
+      draw();
+    };
+    pag.appendChild(nextBtn);
+  }
+
+  // Init — start on today's week
+  const today = new Date();
+  rebuild(today.getFullYear(), today.getMonth());
+  const todayStr = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+  globalIndex = globalWeeks.findIndex((w) =>
+    w.cells.some(
+      (c) => !c.overflow && `${c.year}-${c.month}-${c.day}` === todayStr,
+    ),
+  );
+  if (globalIndex < 0) globalIndex = 0;
+  draw();
 }

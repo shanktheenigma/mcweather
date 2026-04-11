@@ -60,9 +60,45 @@ body.night {
   z-index: 2;
 }
 
+/* ---- Loading ---- */
+.loadingOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+.loadingOverlay.show {
+  display: flex;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loadingText {
+  font-family: Public Sans;
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
 nav {
   height: 50px;
-  /* background-color: rgba(0, 0, 0, 0.437); */
   display: grid;
   grid-template-columns: 20% 60% 15% 5%;
   width: 100%;
@@ -128,16 +164,16 @@ nav {
 .saved button,
 .saveBtn button {
   height: 40px;
-  width: 40px;
   padding: 0px 10px;
-  border-radius: 50px;
+  border-radius: 20px;
   align-items: center;
   align-content: center;
   cursor: pointer;
-  font-size: 1.1rem;
   background: var(--glass);
   border: 1px solid var(--glass-border);
   color: white;
+  font-family: Public Sans;
+  font-weight: 600;
 }
 
 .themeToggle {
@@ -284,7 +320,8 @@ nav {
   width: 180px;
 }
 
-.estWeather {
+.estWeather,
+.currentTime {
   color: var(--text-dim);
   font-family: Public Sans;
   margin-top: 10px;
@@ -445,6 +482,10 @@ nav {
   flex-direction: column;
   margin: 10px 0px;
   text-align: center;
+}
+
+.hCard:hover {
+  background: var(--glass-hover);
 }
 
 .hCard .temp {
@@ -623,6 +664,376 @@ nav {
   min-width: 72px;
 }
 
+/* ------------------------------ */
+.weeklyForecast {
+  margin-top: 20px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  border-radius: 28px;
+  padding: 24px 32px;
+}
+.wfTitle {
+  font-family: Fira Sans;
+  font-size: 20px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+.wfNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.wfNavBtn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wfNavBtn:hover {
+  background: var(--glass-hover);
+}
+.wfMonthLabel {
+  font-family: Fira Sans;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  flex: 1;
+  text-align: center;
+}
+.wfDayHeaders {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  color: var(--text-dim);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.wfDayHeader {
+  font-size: 15px;
+  font-family: Fira Sans;
+  color: var(--text-dim);
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.weeklyHeader {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.wfWeekRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 13px;
+  margin-bottom: 8px;
+}
+.wfDay {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 10px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+  min-height: 100px;
+}
+.wfDay:hover {
+  background: var(--glass-hover);
+}
+.wfDay.today {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+}
+.wfDay.empty {
+  background: none;
+  border-color: transparent;
+  cursor: default;
+}
+.wfDayNum {
+  font-family: Fira Sans;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+.wfDay.today .wfDayNum {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  width: 24px;
+  height: 24px;
+  /* padding: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wfDay img {
+  width: 50px;
+  height: 50px;
+}
+.wfTemp {
+  font-size: 12px;
+  color: white;
+  font-weight: 600;
+  font-family: Lato;
+}
+.wfTempRange {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.wfWeekTabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.wfWeekTab {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: Public Sans;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wfWeekTab:hover {
+  background: var(--glass-hover);
+  color: white;
+}
+.wfWeekTab.active {
+  background: rgba(255, 255, 255, 0.28);
+  color: white;
+}
+
+.wfDay.overflow {
+  opacity: 0.35;
+  cursor: default;
+}
+.wfDay.overflow:hover {
+  background: var(--glass);
+}
+
+.wfPagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.wfPageBtn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.7);
+  width: 50px;
+  height: 32px;
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  background: #ffffff38;
+  width: 32px;
+}
+.wfPageBtn:hover {
+  background: var(--glass-hover);
+  color: white;
+}
+.wfPageBtn.active {
+  background: rgba(255, 255, 255, 0.28);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+}
+.wfPageBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.currentTime {
+  font-family: Public Sans;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.savedOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+.savedOverlay.show {
+  display: flex;
+}
+
+.savedPanel {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 24px 28px;
+  width: 500px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+.savedPanel::-webkit-scrollbar {
+  width: 5px;
+}
+.savedPanel::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 3px;
+}
+
+.savedPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.savedPanelTitle {
+  font-family: Fira Sans;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+.savedCloseBtn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.savedCloseBtn:hover {
+  background: var(--glass-hover);
+}
+
+.savedCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.savedCard {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 40% 40% auto;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.savedCard:hover {
+  background: var(--glass-hover);
+}
+
+.savedCardCity {
+  font-family: Fira Sans;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+.savedCardMeta {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: Public Sans;
+  margin-top: 3px;
+}
+.savedCardBottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.savedCardTemp {
+  font-size: 26px;
+  font-family: Merriweather;
+  font-weight: 900;
+  color: white;
+}
+.savedCardLabel {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-family: Public Sans;
+}
+.savedCardIcon {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.savedCardIcon img {
+  width: 100px;
+  height: 100px;
+}
+
+.savedCardRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.savedCardRight img {
+  width: 52px;
+  height: 52px;
+}
+
+.savedCardRemove {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.savedCardRemove:hover {
+  background: var(--glass-hover);
+  color: white;
+}
+
+.savedEmpty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 30px 0;
+  line-height: 1.8;
+}
+
 /* Small Laptop */
 @media (max-width: 1280px) {
   .container {
@@ -760,6 +1171,110 @@ nav {
     max-width: 100%;
     padding: 12px 14px;
   }
+
+  .weeklyForecast {
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 14px;
+  }
+
+  .wfTitle {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .wfMonthLabel {
+    font-size: 16px;
+  }
+
+  .wfDayHeader {
+    font-size: 13px;
+  }
+
+  .wfWeekRow {
+    gap: 8px;
+  }
+
+  .wfDay {
+    min-height: 88px;
+    border-radius: 12px;
+    padding: 8px 2px 6px;
+    gap: 3px;
+  }
+
+  .wfDay img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .wfDayNum {
+    font-size: 13px;
+  }
+
+  .wfTemp {
+    font-size: 11px;
+  }
+
+  .wfTempRange {
+    font-size: 9px;
+  }
+
+  .wfPagination {
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .wfPageBtn {
+    width: 44px;
+    height: 28px;
+    font-size: 11px;
+    border-radius: 8px;
+  }
+
+  .arrow {
+    width: 28px;
+  }
+
+  .currentTime {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  /* Saved overlay */
+  .savedPanel {
+    width: 90%;
+    max-width: 480px;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .savedPanelTitle {
+    font-size: 18px;
+  }
+
+  .savedCard {
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .savedCardIcon img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .savedCardTemp {
+    font-size: 22px;
+  }
+
+  .savedCardCity {
+    font-size: 14px;
+  }
+
+  .savedCardLabel {
+    font-size: 12px;
+  }
 }
 
 /*  Phone  */
@@ -791,7 +1306,6 @@ nav {
 
   .saved button,
   .saveBtn button {
-    width: 34px;
     height: 34px;
     font-size: 0.95rem;
     padding: 0 8px;
@@ -965,5 +1479,168 @@ nav {
     height: 28px;
     font-size: 12px;
     border-radius: 8px;
+  }
+
+  .weeklyForecast {
+    padding: 12px 10px;
+    border-radius: 16px;
+    margin-top: 10px;
+  }
+
+  .wfTitle {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .wfNav {
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .wfNavBtn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .wfMonthLabel {
+    font-size: 14px;
+  }
+
+  .wfDayHeaders {
+    margin-bottom: 4px;
+  }
+
+  .wfDayHeader {
+    font-size: 11px;
+  }
+
+  .wfWeekRow {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .wfDay {
+    min-height: 72px;
+    border-radius: 10px;
+    padding: 6px 1px 5px;
+    gap: 2px;
+  }
+
+  .wfDay img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .wfDayNum {
+    font-size: 11px;
+  }
+
+  .wfDay.today .wfDayNum {
+    height: 20px;
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .wfTemp {
+    font-size: 10px;
+  }
+
+  .wfTempRange {
+    font-size: 8px;
+  }
+
+  .wfPagination {
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .wfPageBtn {
+    width: 38px;
+    height: 26px;
+    font-size: 10px;
+    border-radius: 7px;
+  }
+
+  .arrow {
+    width: 26px;
+  }
+
+  .currentTime {
+    font-size: 11px;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+
+  /* Saved overlay — full screen sheet on mobile */
+  .savedOverlay {
+    align-items: flex-end;
+  }
+
+  .savedPanel {
+    width: 100%;
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 24px 24px 0 0;
+    padding: 20px 16px;
+  }
+
+  .savedPanelTitle {
+    font-size: 16px;
+  }
+
+  .savedCloseBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  .savedCards {
+    gap: 8px;
+  }
+
+  .savedCard {
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .savedCardIcon img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .savedCardCity {
+    font-size: 13px;
+  }
+
+  .savedCardMeta {
+    font-size: 11px;
+  }
+
+  .savedCardTemp {
+    font-size: 18px;
+  }
+
+  .savedCardLabel {
+    font-size: 11px;
+  }
+
+  .savedCardBottom {
+    gap: 6px;
+    margin-top: 5px;
+  }
+
+  .savedCardRemove {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .savedEmpty {
+    font-size: 13px;
+    padding: 20px 0;
   }
 }
