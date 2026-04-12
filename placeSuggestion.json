@@ -1,0 +1,1324 @@
+{
+  "cities": [
+    {
+      "name": "Yangon",
+      "country": "Myanmar",
+      "outdoor": [
+        {
+          "place": "Shwedagon Pagoda",
+          "desc": "One of Buddhism's most sacred sites, this golden stupa rises 98 metres above the city. At sunrise the entire complex glows with an otherworldly light, drawing pilgrims and visitors alike into a moment of quiet, humbling beauty."
+        },
+        {
+          "place": "Kandawgyi Lake",
+          "desc": "A wide, still lake in the heart of Yangon where locals come to walk, jog, and breathe. The water reflects the surrounding greenery and distant pagodas, making it one of the city's most peaceful and photogenic escapes."
+        },
+        {
+          "place": "Bogyoke Aung San Market",
+          "desc": "Yangon's most beloved market, packed with hundreds of stalls selling lacquerware, jewellery, silk longyis, and antiques. The colonial-era building adds atmosphere, and bargaining with friendly vendors is half the experience."
+        },
+        {
+          "place": "Inya Lake Waterfront",
+          "desc": "A quieter, leafier alternative to the city bustle. Stroll the shaded pathways along the lake's edge, watch herons fish in the shallows, and enjoy the rare sensation of open sky and calm water in a busy capital."
+        },
+        {
+          "place": "People's Park",
+          "desc": "A generous green space in the centre of Yangon, popular with families, couples, and morning exercisers. The park sits in the shadow of Shwedagon Pagoda, making it a lovely spot to relax after exploring the sacred site."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "National Museum of Myanmar",
+          "desc": "Home to the magnificent Sihasana Lion Throne and a vast collection of royal regalia, traditional costumes, and ancient artefacts. The museum offers a thorough and fascinating journey through Myanmar's layered cultural and dynastic history."
+        },
+        {
+          "place": "Yangon City Hall Gallery",
+          "desc": "Set inside one of Yangon's finest colonial buildings, this gallery hosts rotating exhibitions of local art and photography. The architecture alone is worth the visit — grand Burmese-style colonnades with an air of faded imperial grandeur."
+        },
+        {
+          "place": "Junction City Mall",
+          "desc": "A sleek, air-conditioned haven in the city centre with international brands, a good food court, and a cinema. When the heat or rain becomes overwhelming, this modern mall offers a comfortable and convenient place to recharge."
+        },
+        {
+          "place": "Strand Hotel Lounge",
+          "desc": "Stepping into the Strand is stepping back into 1901. This legendary colonial hotel offers afternoon tea and cocktails in a setting of polished teak, slowly turning ceiling fans, and immaculate service that feels genuinely timeless."
+        },
+        {
+          "place": "Bagan Art Gallery",
+          "desc": "A curated space showcasing traditional Myanmar painting alongside contemporary work. The gallery is particularly strong on lacquerware art and tapestry, offering insight into craft traditions passed down through generations of Burmese artisans."
+        }
+      ],
+      "night": [
+        {
+          "place": "19th Street Bar Zone",
+          "desc": "Yangon's most famous night street comes alive after dark with rows of plastic stools, open-air grills, and cold beer. Order skewered meats, pork belly, and prawns cooked over charcoal while the street buzzes with laughter all around you."
+        },
+        {
+          "place": "Padonmar Restaurant",
+          "desc": "A beloved institution serving authentic Bamar cuisine in a warm, traditional setting. The menu spans mohinga, shan noodles, and rich curries with fermented tea leaf salad — an essential evening meal for anyone serious about Myanmar food."
+        },
+        {
+          "place": "Shwedagon Night View",
+          "desc": "After dark the pagoda transforms entirely. Golden light floods the marble terraces, the air fills with the scent of incense and jasmine offerings, and the city below fades away. There is nowhere quite like Shwedagon under the stars."
+        },
+        {
+          "place": "Chinatown Night Market",
+          "desc": "Yangon's Chinatown district lights up at night with red lanterns, steaming woks, and vendors selling everything from noodle soup to sugar cane juice. It is loud, fragrant, and wonderfully alive — one of the city's most memorable evenings."
+        }
+      ]
+    },
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "outdoor": [
+        {
+          "place": "Gardens by the Bay",
+          "desc": "A jaw-dropping horticultural marvel on the Marina Bay waterfront. The Supertrees — towering vertical gardens that light up at night — and the climate-controlled Flower and Cloud Forest domes make this one of the world's most imaginative public spaces."
+        },
+        {
+          "place": "East Coast Park",
+          "desc": "A long, breezy coastal park stretching along the southeastern shore, beloved by cyclists, rollerbladers, and picnickers. Rent a bike, grab a coconut, and spend a few hours by the sea away from the city's relentless intensity."
+        },
+        {
+          "place": "Sentosa Island",
+          "desc": "Singapore's leisure island packs beaches, theme parks, cable cars, and ocean views into one compact destination. Whether you want to surf, laze on Palawan Beach, or try the rides at Universal Studios, Sentosa reliably delivers a great time."
+        },
+        {
+          "place": "Fort Canning Park",
+          "desc": "A lush, historically rich hilltop park right in the city centre. Walk through ancient Malay royal grounds, colonial British fortifications, and World War II bunkers, all shaded by towering trees and connected by quiet, well-maintained garden paths."
+        },
+        {
+          "place": "Marina Bay Waterfront",
+          "desc": "The most iconic kilometre in Singapore. Walk the promenade past the ArtScience Museum, the Helix Bridge, and the Esplanade to take in the full spectacle of the city's skyline — best at dusk when the lights reflect on the water."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "National Gallery Singapore",
+          "desc": "Housed in the beautifully restored City Hall and Supreme Court buildings, this world-class gallery holds the largest public collection of modern Southeast Asian art. The architecture alone is extraordinary — colonial grandeur reimagined for contemporary culture."
+        },
+        {
+          "place": "ArtScience Museum",
+          "desc": "Shaped like a giant lotus flower on the waterfront, this museum bridges the creative and scientific worlds with ambitious exhibitions. Permanent digital art installations and thought-provoking temporary shows make it endlessly worth returning to."
+        },
+        {
+          "place": "Jewel Changi Airport",
+          "desc": "Even if you're not flying, Jewel deserves a visit. The Rain Vortex — a 40-metre indoor waterfall through a glass dome — is surrounded by gardens, restaurants, and shops in what might be the world's most spectacular airport terminal."
+        },
+        {
+          "place": "VivoCity Mall",
+          "desc": "Singapore's largest shopping mall sits at the edge of the harbour, with a rooftop sky park and great views towards Sentosa. Beyond the shops it's a proper destination — come for food, a film, and a walk along the waterfront."
+        },
+        {
+          "place": "Asian Civilisations Museum",
+          "desc": "A richly curated museum tracing the histories and cultures of Asia's great civilisations, from the Tang dynasty to the Indian Ocean trade routes. Set in a beautiful colonial riverside building, it offers depth and context that few museums match."
+        }
+      ],
+      "night": [
+        {
+          "place": "Clarke Quay",
+          "desc": "Singapore's riverside entertainment district pulses with energy after dark. Converted shophouses line the water's edge, filled with bars, clubs, and restaurants. The atmosphere and setting along the Singapore River are hard to beat on a warm evening."
+        },
+        {
+          "place": "Marina Bay Sands SkyPark",
+          "desc": "Perched atop three iconic towers at 200 metres, the SkyPark observation deck offers one of the world's most dramatic urban panoramas. At night the entire city sprawls below in glittering light — a view genuinely worth the admission price."
+        },
+        {
+          "place": "Lau Pa Sat",
+          "desc": "One of Singapore's most historic and beautiful hawker centres, housed in a Victorian cast-iron octagonal market. By night the surrounding streets become a satay zone, with dozens of stalls firing up grills and filling the air with wonderful smoky aromas."
+        },
+        {
+          "place": "Bugis Street Night Market",
+          "desc": "A lively, chaotic, and thoroughly enjoyable stretch of street stalls selling clothes, accessories, trinkets, and food until late. It lacks the polish of Singapore's malls but makes up for it entirely in character, energy, and remarkably cheap snacks."
+        }
+      ]
+    },
+    {
+      "name": "Mandalay",
+      "country": "Myanmar",
+      "outdoor": [
+        {
+          "place": "Mandalay Hill",
+          "desc": "Climb or take a covered escalator to the summit for sweeping panoramic views over the entire Mandalay plain, the Irrawaddy River, and distant mountains. At sunset the whole landscape turns amber and gold in a display that stays with you."
+        },
+        {
+          "place": "U Bein Bridge",
+          "desc": "The world's longest teak bridge stretches nearly 1.2 kilometres across Taungthaman Lake. Built in 1850 from salvaged palace timber, it is most magical at sunset when silhouetted monks and fishermen cross in the fading golden light."
+        },
+        {
+          "place": "Mandalay Palace Moat",
+          "desc": "The vast moat surrounding the walled royal palace reflects the crenellated walls and watchtowers in perfect stillness. Walking or cycling the full perimeter gives a strong sense of the scale and grandeur of Myanmar's last royal capital."
+        },
+        {
+          "place": "Mahamuni Pagoda",
+          "desc": "One of Myanmar's most revered Buddhist sites, home to a famous bronze Buddha image that male devotees cover in gold leaf. The constant activity of pilgrims, monks, and devotees makes this a living, breathing place of profound spiritual significance."
+        },
+        {
+          "place": "Jade Market",
+          "desc": "One of the world's most fascinating gem markets, where traders crouch under magnifying lenses examining raw jade stones in the morning light. Even without buying anything, watching the commerce and craftsmanship in action is a completely absorbing experience."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Mandalay Marionettes Theatre",
+          "desc": "A rare chance to witness Myanmar's traditional yama zatpwe puppet theatre performed live. The intricate marionettes take years to master, and the colourful costumes and ancient stories they tell make for an enchanting and culturally irreplaceable evening."
+        },
+        {
+          "place": "Shwenandaw Monastery",
+          "desc": "The only surviving structure from the original Mandalay Palace, this extraordinary teak monastery is covered floor to ceiling in minutely detailed woodcarving. Every pillar, panel, and eave tells a story — it is among the finest examples of Burmese craftsmanship."
+        },
+        {
+          "place": "Mandalay Museum",
+          "desc": "A well-presented collection of royal Konbaung dynasty artefacts, ceremonial objects, traditional costumes, and historical photographs. The museum provides essential context for understanding Mandalay's importance as Myanmar's last great royal capital before British colonisation."
+        },
+        {
+          "place": "Gold Leaf Workshops",
+          "desc": "In small workshops around the city, teams of men beat tiny nuggets of gold into tissue-thin sheets used for Buddha images across Myanmar. Watching the rhythmic hammering and the incredible lightness of the finished product is quietly mesmerising."
+        },
+        {
+          "place": "City Mart Supercentre",
+          "desc": "When the heat of Mandalay becomes relentless, City Mart offers cool air, local snacks, Shan pickled tea, and a wide range of Myanmar food products to try. It's also a fascinating window into everyday Burmese consumer life."
+        }
+      ],
+      "night": [
+        {
+          "place": "Chan Mya Shwe Pyi Night Market",
+          "desc": "Mandalay's most popular local night market fills with food stalls serving mohinga, shan noodles, grilled corn, and sugarcane juice. It's entirely local in character — no tourist polish, just the authentic flavour of a Mandalay evening."
+        },
+        {
+          "place": "Sky Bar Mandalay",
+          "desc": "One of the city's few rooftop venues, offering cold drinks and a sweeping view across the low-rise city towards the illuminated pagodas on Mandalay Hill. A relaxed, atmospheric place to end the day as the city finally cools down."
+        },
+        {
+          "place": "Night Bazaar Road",
+          "desc": "A pleasant evening wander through stalls selling lacquerware, puppets, tapestries, and local handicrafts. Prices are reasonable and the atmosphere is unhurried — Mandalay's night market reflects the slower, more traditional pace of life in Myanmar's second city."
+        },
+        {
+          "place": "Eindawya Pagoda Lights",
+          "desc": "This beautiful 19th-century golden pagoda in the heart of the old city is illuminated at night in warm amber light. Locals gather on the surrounding steps in the cool evening air, creating a serene and genuinely local scene."
+        }
+      ]
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "outdoor": [
+        {
+          "place": "Hyde Park",
+          "desc": "London's grandest royal park offers 350 acres of open lawns, the Serpentine lake, outdoor sculptures, and the famous Speakers' Corner. On sunny days the whole city seems to pour in — it is the perfect place to feel London's heartbeat."
+        },
+        {
+          "place": "South Bank Riverside Walk",
+          "desc": "One of the great urban walks in the world. From Westminster Bridge to Tower Bridge the South Bank passes the Tate Modern, Shakespeare's Globe, Borough Market, and the Shard — every stretch packed with culture, food, and river views."
+        },
+        {
+          "place": "Greenwich Park",
+          "desc": "Climb to the Royal Observatory and stand on the Prime Meridian with one of London's finest panoramas spread before you. The park itself is beautiful — formal flower gardens, ancient trees, and a great hillside for rolling down."
+        },
+        {
+          "place": "Borough Market",
+          "desc": "London's oldest and most celebrated food market, trading under Victorian railway arches near London Bridge. The stalls overflow with artisan cheeses, fresh bread, charcuterie, and street food from around the world — the most incredible smells you will encounter in the city."
+        },
+        {
+          "place": "Hampstead Heath",
+          "desc": "A vast, semi-wild parkland in north London that feels genuinely rural despite being minutes from the city centre. Swim in the ancient ponds, walk to Parliament Hill for the famous skyline view, and escape the urban pace entirely."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "British Museum",
+          "desc": "One of the world's greatest repositories of human civilisation, housing eight million works spanning two million years of history. The Rosetta Stone, the Elgin Marbles, and the Egyptian mummies alone justify a visit — though the real treasure is getting wonderfully lost inside."
+        },
+        {
+          "place": "Tate Modern",
+          "desc": "Housed in a magnificent converted power station on the Thames, the Tate Modern holds one of the world's most significant collections of modern and contemporary art. Even the vast Turbine Hall, used for large-scale installations, is worth the trip alone."
+        },
+        {
+          "place": "Natural History Museum",
+          "desc": "A cathedral to the natural world, complete with blue whale skeleton, a dinosaur gallery, a meteorite collection, and an earthquake simulator. It is magnificent for children and adults alike — one of London's most beloved and completely free institutions."
+        },
+        {
+          "place": "Victoria & Albert Museum",
+          "desc": "The world's greatest museum of art and design, spanning 5,000 years of human creativity across fashion, ceramics, jewellery, photography, and furniture. The permanent collection alone could occupy you for days, and the temporary exhibitions are consistently among London's best."
+        },
+        {
+          "place": "Covent Garden Market",
+          "desc": "A lively mix of boutique shopping, street performers, restaurants, and the London Transport Museum under one beautiful Victorian market roof. The surrounding streets are equally worth exploring — whether you're shopping, eating, or watching an impromptu outdoor performance."
+        }
+      ],
+      "night": [
+        {
+          "place": "Soho Bar Crawl",
+          "desc": "London's most densely packed entertainment district offers something for every taste — intimate jazz bars, rooftop cocktail lounges, old-school pubs, and live music venues within a few minutes' walk. After midnight Soho becomes a different city entirely."
+        },
+        {
+          "place": "West End Theatre",
+          "desc": "London's West End is the theatrical capital of the world. On any given night dozens of productions run simultaneously — from long-running musicals to serious new drama and classic revivals. Booking ahead is essential; last-minute tickets are often surprisingly available."
+        },
+        {
+          "place": "Sky Garden",
+          "desc": "Perched on the 35th floor of the Walkie-Talkie building, this free public rooftop garden offers extraordinary 360-degree views across London. At night the city lights stretch to the horizon in every direction — book ahead, as it fills fast."
+        },
+        {
+          "place": "Shoreditch Night Market",
+          "desc": "East London's creative hub comes alive after dark with street food markets, independent bars, projection art on warehouse walls, and inventive nightlife that makes Shoreditch one of London's most exciting places to spend an evening."
+        }
+      ]
+    },
+    {
+      "name": "New York",
+      "country": "United States",
+      "outdoor": [
+        {
+          "place": "Central Park",
+          "desc": "843 acres of sculpted parkland in the heart of Manhattan — an extraordinary feat of city planning and one of the world's great urban spaces. Whether you walk, cycle, row a boat, or simply sit on the grass, it never disappoints."
+        },
+        {
+          "place": "Brooklyn Bridge Walk",
+          "desc": "Walk across one of the world's most beautiful suspension bridges and be rewarded with some of New York's finest views. The Gothic towers frame the Manhattan skyline perfectly, and the cables create a cathedral-like geometry above your head as you cross."
+        },
+        {
+          "place": "The High Line",
+          "desc": "A disused elevated railway line transformed into one of the most celebrated public parks in the world. The 2.3-kilometre garden threads through the west side of Manhattan, offering unexpected green space, public art, and views down into the street life below."
+        },
+        {
+          "place": "Coney Island Boardwalk",
+          "desc": "A classic slice of old New York on the Brooklyn shoreline — a wooden boardwalk, the iconic Wonder Wheel, Nathan's hot dogs, and the Atlantic Ocean. It is cheerfully faded and completely authentic, a million miles from midtown Manhattan."
+        },
+        {
+          "place": "DUMBO Waterfront",
+          "desc": "The cobblestone streets of DUMBO offer the most photographed view in New York — the Empire State Building perfectly framed between the bridge towers. The waterfront park beyond has great views and a pleasant, relaxed atmosphere for an afternoon."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Metropolitan Museum of Art",
+          "desc": "The Met is simply one of the greatest museums on earth — 5,000 years of art from every corner of the world. Budget an entire day and you still won't see everything. The temple of Dendur alone is worth the price of admission."
+        },
+        {
+          "place": "American Museum of Natural History",
+          "desc": "The dinosaur halls alone would make this legendary, but the museum also houses incredible exhibits on human origins, ocean life, meteorites, and the cosmos. The Rose Center for Earth and Space is one of the finest science exhibits anywhere."
+        },
+        {
+          "place": "MoMA",
+          "desc": "The Museum of Modern Art holds one of the most important collections of modern and contemporary art in existence — Van Gogh's Starry Night, Picasso, Warhol, Pollock. The building is beautiful and the sculpture garden is a genuine urban sanctuary."
+        },
+        {
+          "place": "Chelsea Market",
+          "desc": "Built inside a former biscuit factory running the full block between 9th and 10th Avenues, Chelsea Market is a brilliant indoor food hall, shopping destination, and creative hub. The building itself — raw brick, exposed pipes — is extraordinary."
+        },
+        {
+          "place": "Grand Central Terminal",
+          "desc": "One of the world's great railway stations and a masterpiece of Beaux-Arts architecture. Look up at the famous celestial ceiling, explore the lower concourse food market, and marvel that this level of beauty still functions as a daily commuter hub."
+        }
+      ],
+      "night": [
+        {
+          "place": "Times Square",
+          "desc": "Overwhelming, relentless, and undeniably spectacular — Times Square at night is unlike anywhere else on earth. The scale of the illuminated billboards, the density of the crowd, and the sheer kinetic energy makes it impossible not to stop and stare."
+        },
+        {
+          "place": "Jazz at Lincoln Center",
+          "desc": "The world's leading jazz institution, set inside the Time Warner Center with a glass-walled performance hall overlooking Central Park. Whether you attend a ticketed concert or drop into the free Atrium shows, the musicianship is consistently extraordinary."
+        },
+        {
+          "place": "Rooftop Bar 230 Fifth",
+          "desc": "One of New York's best outdoor rooftop bars, with the Empire State Building looming directly overhead. In winter they provide robes; in summer it's one of the great places in the city to have a drink and feel the full scale of Manhattan."
+        },
+        {
+          "place": "Brooklyn Night Bazaar",
+          "desc": "A beloved Brooklyn institution bringing together local food vendors, artisan makers, live bands, and DJs in a large indoor-outdoor space. The atmosphere is warm and communal — far removed from Manhattan's intensity, and all the better for it."
+        }
+      ]
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "outdoor": [
+        {
+          "place": "Shinjuku Gyoen",
+          "desc": "A magnificent national garden combining French formal design, English landscape, and Japanese traditional garden styles across 58 hectares. In cherry blossom season it is breathtakingly beautiful; the rest of the year it remains Tokyo's finest escape from the urban rush."
+        },
+        {
+          "place": "Asakusa & Senso-ji",
+          "desc": "Tokyo's oldest temple and its surrounding Nakamise shopping street represent old Edo at its most evocative. The Thunder Gate, the incense smoke, the street food stalls, and the constant movement of visitors and worshippers create an atmosphere found nowhere else in the city."
+        },
+        {
+          "place": "Odaiba Waterfront",
+          "desc": "A futuristic artificial island in Tokyo Bay with views back across the water to the Rainbow Bridge and the city skyline. The boardwalk is ideal for an early evening stroll, and the mix of museums, malls, and open plazas makes it endlessly explorable."
+        },
+        {
+          "place": "Yoyogi Park",
+          "desc": "Tokyo's most people-watching-friendly park, where every weekend brings musicians, dancers, cosplayers, and picnickers to the same wide lawns. Adjacent to the Meiji Shrine, it offers a remarkable transition between Japan's modern and traditional souls."
+        },
+        {
+          "place": "Shibuya Crossing",
+          "desc": "The world's busiest pedestrian intersection and a defining symbol of urban Japan. When the lights change, up to 3,000 people cross simultaneously from every direction. Walk through it and become part of the spectacle — there is nothing quite like it."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "teamLab Borderless",
+          "desc": "An entire museum of immersive digital art where rooms flow into each other without walls or boundaries. Visitors wander through environments of light, sound, and projection that respond to their movement — genuinely unlike any art experience and astonishing at every turn."
+        },
+        {
+          "place": "Tokyo National Museum",
+          "desc": "Japan's oldest and largest museum, holding the world's most comprehensive collection of Japanese art and antiquity — from ancient Jomon pottery to samurai armour, ukiyo-e woodblock prints, and Buddhist sculpture. The main building and its garden are architectural treasures."
+        },
+        {
+          "place": "Akihabara Electronics Town",
+          "desc": "Tokyo's legendary electronics and otaku district, where multi-storey buildings are entirely dedicated to components, retro video games, manga, anime merchandise, and gadgets of every conceivable kind. Even with no intention of buying, it is a completely absorbing cultural spectacle."
+        },
+        {
+          "place": "Mori Art Museum",
+          "desc": "Perched on the 53rd floor of Roppongi Hills, the Mori Art Museum hosts some of Tokyo's most ambitious contemporary art exhibitions alongside permanent installations. The adjacent observation deck offers spectacular views, making the entire visit a satisfying mix of art and cityscape."
+        },
+        {
+          "place": "Tsukiji Outer Market",
+          "desc": "Even though the main tuna auctions moved to Toyosu, Tsukiji's outer market remains one of Tokyo's great food experiences. Fresh seafood, tamagoyaki, knife shops, and perfectly assembled sushi breakfasts draw early risers from across the city every single morning."
+        }
+      ],
+      "night": [
+        {
+          "place": "Shinjuku Golden Gai",
+          "desc": "Six narrow alleys crammed with around 200 tiny bars, each seating just six to eight people. Every bar has its own personality — some serve only jazz lovers, others welcome strangers warmly. It is one of the world's truly great nocturnal neighbourhoods."
+        },
+        {
+          "place": "Tokyo Tower Night View",
+          "desc": "Lit in brilliant orange against the night sky, Tokyo Tower is the city's most romantic landmark after dark. The views from the observation decks show the city spreading endlessly in every direction — a sea of light that reveals the true scale of Tokyo."
+        },
+        {
+          "place": "Roppongi Hills",
+          "desc": "Tokyo's most sophisticated entertainment complex comes into its own at night, with excellent restaurants, bars, the Mori Art Museum open late, an open-air observatory, and a constant flow of the city's most international crowd gathering together."
+        },
+        {
+          "place": "Omoide Yokocho",
+          "desc": "Memory Lane — a narrow, smoky alley behind Shinjuku station lined with tiny yakitori stalls that have barely changed since the 1940s. Squeeze onto a stool, order grilled chicken skewers and cold beer, and let the ancient atmosphere do the rest."
+        }
+      ]
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "outdoor": [
+        {
+          "place": "Eiffel Tower Gardens",
+          "desc": "The Champ de Mars park stretching south from the Eiffel Tower is one of Paris's great outdoor gathering places. Parisians picnic here in every season, and the view of the tower from the grass — with a bottle of wine — is simply perfect."
+        },
+        {
+          "place": "Montmartre Hill",
+          "desc": "Climb the steps to Sacré-Cœur and discover the most charming neighbourhood in Paris — a hilltop village of cobbled streets, artists' studios, small cafés, and hidden squares. The views across the city from the steps of the basilica are among Paris's finest."
+        },
+        {
+          "place": "Luxembourg Gardens",
+          "desc": "The most beautiful formal gardens in Paris, surrounding the Palais du Luxembourg. Locals sail model boats on the central pond, read in green chairs under chestnut trees, and treat the gardens as a genuine extension of their own living rooms."
+        },
+        {
+          "place": "Seine Riverbanks",
+          "desc": "The UNESCO-listed banks of the Seine are one of Paris's greatest pleasures for walking — past Notre-Dame, across the Île Saint-Louis, under centuries-old bridges, and along the bouquiniste book stalls. The river never loses its appeal at any hour."
+        },
+        {
+          "place": "Père Lachaise Cemetery",
+          "desc": "The world's most visited cemetery is also one of Paris's most atmospheric parks. Jim Morrison, Oscar Wilde, and Edith Piaf rest here among extraordinary funerary sculpture, ancient trees, and the particular quiet that only old cemeteries know how to create."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "The Louvre",
+          "desc": "The world's largest and most visited art museum, home to the Mona Lisa, the Winged Victory, and Venus de Milo. The former royal palace alone is worth the visit — though navigating its corridors can feel like a beautiful, art-filled labyrinth."
+        },
+        {
+          "place": "Musée d'Orsay",
+          "desc": "Housed in a magnificent Beaux-Arts railway station, the d'Orsay holds the world's finest collection of Impressionist art — Monet, Renoir, Degas, Van Gogh, Cézanne. The building and the collection reinforce each other magnificently, making it arguably Paris's greatest museum experience."
+        },
+        {
+          "place": "Centre Pompidou",
+          "desc": "The architectural provocateur of Paris — its colourful external pipes still look radical decades on. Inside is one of Europe's most important collections of modern and contemporary art, and the rooftop terrace offers a panoramic view that rivals the Eiffel Tower."
+        },
+        {
+          "place": "Galeries Lafayette",
+          "desc": "Paris's most spectacular department store is worth visiting for the architecture alone — a magnificent Belle Époque dome of stained glass soars above the central atrium. The food hall is superb, and the rooftop terrace is free and entirely beautiful."
+        },
+        {
+          "place": "Palais Royal Arcade",
+          "desc": "One of Paris's most elegant and undervisited spaces — colonnaded galleries enclosing a formal garden, lined with specialist boutiques, antique dealers, and small restaurants. The Daniel Buren striped columns in the courtyard add a pleasingly unexpected contemporary note."
+        }
+      ],
+      "night": [
+        {
+          "place": "Moulin Rouge",
+          "desc": "The world's most famous cabaret has been staging its spectacular Féerie show since 1889. Feather boas, the French cancan, elaborate sets, and 80 dancers in extraordinary costumes make for an experience that is simultaneously kitsch and genuinely breathtaking."
+        },
+        {
+          "place": "Le Marais Bars",
+          "desc": "Paris's most vibrant and diverse neighbourhood comes into its own after dark — medieval streets lined with wine bars, concept cocktail lounges, and excellent late-night restaurants from the Jewish quarter on Rue des Rosiers to the buzzing Bastille."
+        },
+        {
+          "place": "Eiffel Tower Light Show",
+          "desc": "Every hour on the hour after dark the Eiffel Tower erupts in a five-minute display of 20,000 gold and white lights that sparkle across the Paris skyline. Watching from the Trocadero with Champagne in hand is an unforgettable experience."
+        },
+        {
+          "place": "Jazz Club Caveau",
+          "desc": "Descended into the cellar of a 17th-century building on the Île de la Cité, Caveau de la Huchette is one of the world's great jazz clubs. Live bands play every night to a mixed crowd who spill onto the tiny dance floor."
+        }
+      ]
+    },
+    {
+      "name": "Dubai",
+      "country": "UAE",
+      "outdoor": [
+        {
+          "place": "Jumeirah Beach",
+          "desc": "Dubai's most famous stretch of white sand faces the warm waters of the Arabian Gulf, with the Burj Al Arab rising theatrically in the background. The public beach is clean, well-maintained, and one of the finest urban beaches anywhere in the world."
+        },
+        {
+          "place": "Al Fahidi Historic District",
+          "desc": "A quiet revelation in a city built on spectacle — narrow wind-tower lanes, traditional courtyard houses, and art galleries occupying buildings that predate the oil boom. The surrounding old souks give essential context for understanding what Dubai was before."
+        },
+        {
+          "place": "Dubai Marina Walk",
+          "desc": "A 7-kilometre waterfront promenade curving around one of the world's largest man-made marinas. Lined with cafés, restaurants, and yachts, it is best enjoyed in the evening when the air cools and the illuminated skyline reflects beautifully on the water."
+        },
+        {
+          "place": "Miracle Garden",
+          "desc": "An almost surreal explosion of colour in the desert — 150 million flowers sculpted into heart arches, castle towers, and a life-size Emirates A380. It operates only from October to April, making timing essential for this genuinely astonishing spectacle."
+        },
+        {
+          "place": "Global Village",
+          "desc": "An enormous open-air multicultural festival where 90 countries present food, performance, crafts, and retail in themed national pavilions. It is enormous, brilliant fun, and one of the most genuinely international experiences available anywhere in the Gulf."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Dubai Mall",
+          "desc": "The world's largest mall by total area contains 1,200 shops, an Olympic ice rink, a genuine indoor aquarium with sharks and rays, and a waterfall feature. Even dedicated anti-mall people tend to find it genuinely impressive in scale and spectacle."
+        },
+        {
+          "place": "Museum of the Future",
+          "desc": "The most visually striking building in Dubai — a torus-shaped structure covered in Arabic calligraphy housing visionary exhibitions on humanity's future. The building exterior alone is worth the trip, and the immersive interior experiences are thought-provoking and beautifully produced."
+        },
+        {
+          "place": "Dubai Frame",
+          "desc": "A 150-metre golden picture frame straddling old and new Dubai — literally framing the old city on one side and the modern skyline on the other. The glass-floored sky bridge connecting the two towers 150 metres up is not for the faint-hearted."
+        },
+        {
+          "place": "Ski Dubai",
+          "desc": "Real snow, real ski runs, and real penguins inside the Mall of the Emirates. The indoor ski slope covers 22,500 square metres with five runs of varying difficulty. Utterly impractical and somehow completely wonderful — a genuinely unforgettable Dubai absurdity done very well."
+        },
+        {
+          "place": "Dubai Opera",
+          "desc": "Shaped like a traditional dhow sailing vessel, Dubai Opera is the heart of the city's cultural ambitions. The programme brings world-class opera, ballet, theatre, and concerts to a city not traditionally associated with high culture — and the results are consistently impressive."
+        }
+      ],
+      "night": [
+        {
+          "place": "Burj Khalifa At the Top",
+          "desc": "At 828 metres, the world's tallest building offers observation decks at levels 124 and 148. At night the city of light spreads to the horizon in every direction — an experience of genuine, staggering scale that no photograph adequately prepares you for."
+        },
+        {
+          "place": "Dubai Fountain Show",
+          "desc": "The world's largest choreographed fountain system performs on the Burj Khalifa lake every evening. Jets of water shoot 150 metres into the air in perfect synchronisation with music, illuminated by 6,600 lights. It is completely free and completely spectacular."
+        },
+        {
+          "place": "La Mer Beach Night",
+          "desc": "Dubai's trendiest beachfront district comes alive at night with outdoor dining, street art, boutique hotels, and a carnival atmosphere along the open-air promenade. The combination of sea breeze, good food, and relaxed energy makes it one of the city's best evenings."
+        },
+        {
+          "place": "Gold Souk at Night",
+          "desc": "Deira's famous Gold Souk glitters under harsh display lighting as hundreds of jewellery shops compete for attention across the covered market lanes. Even with no intention of buying, wandering through this concentration of gold and gems after dark is a dazzling experience."
+        }
+      ]
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "outdoor": [
+        {
+          "place": "Wat Phra Kaew",
+          "desc": "Thailand's most sacred Buddhist temple sits within the Grand Palace complex, housing the revered Emerald Buddha. The surrounding buildings are encrusted with coloured glass mosaics and gold leaf that catch the sunlight brilliantly — a genuinely overwhelming display of devotion and artistry."
+        },
+        {
+          "place": "Chatuchak Weekend Market",
+          "desc": "One of the world's largest markets, with over 15,000 stalls spread across 35 acres every Saturday and Sunday. Antiques, vintage clothing, plants, street food, handmade ceramics, and almost anything else you can imagine are sold here in joyful, labyrinthine chaos."
+        },
+        {
+          "place": "Chao Phraya Riverside",
+          "desc": "Bangkok's great river pulses with life — long-tail boats, rice barges, ferries, and tourist cruises all share the water. Taking a local ferry rather than a tuk-tuk and visiting Wat Arun from the opposite bank reveals a different, older Bangkok."
+        },
+        {
+          "place": "Lumphini Park",
+          "desc": "Bangkok's largest and most beloved park offers a genuine green escape from the traffic and heat. Early mornings bring tai chi practitioners, joggers, and monitor lizards; afternoons see picnickers and swan-shaped paddleboats on the central lake."
+        },
+        {
+          "place": "Flower Market (Pak Khlong Talat)",
+          "desc": "Bangkok's 24-hour flower market is most spectacular between midnight and dawn when fresh shipments arrive. Mountains of jasmine garlands, orchid arrangements, marigold offerings, and lotus blooms fill the riverside stalls in an overwhelming sensory experience of colour and fragrance."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Bangkok Art & Culture Centre",
+          "desc": "A nine-storey contemporary arts hub in the heart of the city connected directly to the Siam BTS station. The galleries host rotating exhibitions of Thai and international contemporary art, design, and photography, with an excellent programme of events throughout the year."
+        },
+        {
+          "place": "Jim Thompson House",
+          "desc": "The preserved home of American silk entrepreneur Jim Thompson comprises six traditional Thai houses reassembled around a Bangkok canal. The collection of Asian antiques inside is exceptional, and Thompson's mysterious disappearance in 1967 adds an irresistible layer of intrigue to the visit."
+        },
+        {
+          "place": "MBK Center",
+          "desc": "Eight floors of affordable everything — phones, electronics, clothing, souvenirs, and food — in one of Bangkok's most popular shopping destinations. The air conditioning is reliable, the prices are low, and the energy of 100,000 daily visitors makes it an experience in itself."
+        },
+        {
+          "place": "Ancient City Museum",
+          "desc": "Located south of Bangkok, this extraordinary 80-hectare outdoor museum contains 116 scale replicas of Thailand's most significant historical monuments and temples. Walking or cycling between them provides an accessible and surprisingly moving overview of Thai architectural heritage across many centuries."
+        },
+        {
+          "place": "Siam Paragon Aquarium",
+          "desc": "Southeast Asia's largest aquarium sits beneath the Siam Paragon luxury mall, housing 30,000 aquatic animals across themed zones including a shark tunnel, Amazon river section, and open ocean tank. The contrast between the luxury mall above and the ocean world below is peculiarly wonderful."
+        }
+      ],
+      "night": [
+        {
+          "place": "Khao San Road",
+          "desc": "The world's most famous backpacker street has evolved into something for everyone — cheap Chang beer, pad thai from street carts, bucket cocktails, live music spilling from bars, and an international crowd that keeps the energy going until well past dawn."
+        },
+        {
+          "place": "Vertigo Rooftop Bar",
+          "desc": "Perched on the 61st floor of the Banyan Tree Hotel with no roof or walls between you and Bangkok's sky, Vertigo offers one of the most dramatic open-air dining experiences in Asia. The view of Bangkok spreading to the horizon at night is breathtaking."
+        },
+        {
+          "place": "Asiatique The Riverfront",
+          "desc": "A beautifully conceived open-air night market in converted riverside warehouses, with a giant Ferris wheel, excellent restaurants, craft shops, and live cabaret shows. It is polished but atmospheric — consistently one of Bangkok's most enjoyable and well-rounded evenings."
+        },
+        {
+          "place": "Silom Night Market",
+          "desc": "The streets around Silom and Patpong fill with stalls at night, offering street food, live music, and local colour. It's boisterous and completely Thai in character — a great place to eat, walk, and take in the raw energy of Bangkok after dark."
+        }
+      ]
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "outdoor": [
+        {
+          "place": "Bondi Beach",
+          "desc": "Australia's most iconic kilometre of sand draws surfers, swimmers, and sunbathers from across the world. The Icebergs ocean pool at the southern end is legendary, and the surrounding suburb has a genuine beach-town character that never quite disappears under the tourist pressure."
+        },
+        {
+          "place": "Bondi to Coogee Coastal Walk",
+          "desc": "A spectacular 6-kilometre cliff-top walk connecting four beaches along Sydney's southeastern coastline. The path passes dramatic rock formations, ocean pools carved into the cliff face, sculpture installations, and endless views of the Pacific — one of the world's great urban coastal walks."
+        },
+        {
+          "place": "Royal Botanic Garden",
+          "desc": "Stretching along the harbour foreshore beside the Opera House, Sydney's botanic garden is the city's finest outdoor space. The views across the harbour to the Bridge are exceptional, the plant collection spans 4,500 species, and the flying fox colony is a genuine spectacle."
+        },
+        {
+          "place": "Manly Beach Ferry Ride",
+          "desc": "The 30-minute ferry journey from Circular Quay to Manly is one of the world's great commuter routes — passing the Opera House, under the Bridge, and into the open Pacific. The beach at the end is beautiful, but the journey is the real experience."
+        },
+        {
+          "place": "The Rocks Markets",
+          "desc": "Every weekend beneath the Harbour Bridge approach, the Rocks markets fill the cobblestone streets of Sydney's oldest surviving neighbourhood with artisan food, handmade jewellery, vintage goods, and local art. The setting is beautiful and the history immediately around you is tangible."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Sydney Opera House",
+          "desc": "Jørn Utzon's masterpiece is one of the 20th century's greatest buildings — the interlocking concrete shells on Bennelong Point are instantly recognisable from every angle. Inside, the programming ranges from opera and ballet to rock concerts, comedy, and experimental theatre."
+        },
+        {
+          "place": "Australian Museum",
+          "desc": "Australia's oldest museum houses an extraordinary collection spanning natural history, Indigenous culture, minerals, and Pacific peoples. The First Nations collection is particularly significant, representing the world's oldest continuous culture with objects, stories, and perspectives that demand time and attention."
+        },
+        {
+          "place": "Art Gallery of NSW",
+          "desc": "A magnificent neoclassical building housing one of Australia's most important art collections — from colonial landscape painting to Aboriginal and Torres Strait Islander art, and an excellent programme of international touring exhibitions. The free permanent collection makes it entirely essential."
+        },
+        {
+          "place": "Darling Harbour IMAX",
+          "desc": "The eight-storey screen at Sydney's IMAX theatre is one of the largest in the world, creating an overwhelming immersive cinema experience for blockbusters and nature documentaries alike. The surrounding Darling Harbour precinct offers excellent food and entertainment to complete the evening."
+        },
+        {
+          "place": "QVB Shopping Centre",
+          "desc": "The Queen Victoria Building is a stunning late-Victorian sandstone building occupying an entire city block, with a magnificent stained-glass dome at its centre. The shops inside range from boutiques to jewellers, but the real reason to visit is the extraordinary architecture surrounding you."
+        }
+      ],
+      "night": [
+        {
+          "place": "Circular Quay Night",
+          "desc": "After dark Sydney's premier public space becomes genuinely magical — the Opera House glows white, the Harbour Bridge arches overhead in bright light, and ferries trace illuminated paths across the water. Simply walking between these landmarks at night is one of the great urban experiences."
+        },
+        {
+          "place": "Newtown Bar Strip",
+          "desc": "King Street in Newtown is Sydney's most eclectic and genuinely local nightlife strip — dive bars, craft beer pubs, live music venues, and late-night Thai restaurants in a neighbourhood that has resisted gentrification while remaining vibrant and constantly interesting."
+        },
+        {
+          "place": "Opera Bar",
+          "desc": "Arguably the finest bar location in the world — right on the harbour beneath the sails of the Opera House, with the Bridge ahead and the city skyline to the right. At sunset and into the night, with a cold drink in hand, it is hard to imagine a better place to be."
+        },
+        {
+          "place": "Barangaroo Night Markets",
+          "desc": "The foreshore precinct at Barangaroo hosts excellent night markets on the harbour's edge, with food from across Australia and Asia, local artisan stalls, live music, and the warm, relaxed outdoor evening atmosphere that Sydney does better than almost anywhere."
+        }
+      ]
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "outdoor": [
+        {
+          "place": "Hagia Sophia",
+          "desc": "For nearly a thousand years the greatest building in the world, the Hagia Sophia remains one of history's most astonishing architectural achievements. The vast dome appears to float above the interior on a ring of light — entering it for the first time is a genuinely humbling experience."
+        },
+        {
+          "place": "Bosphorus Strait Walk",
+          "desc": "Walk along the European shore of the Bosphorus and you are simultaneously in Europe and looking directly at Asia across a few hundred metres of water. The strait carries some of the world's busiest shipping traffic, making the waterfront endlessly dynamic and compelling."
+        },
+        {
+          "place": "Spice Bazaar Surrounds",
+          "desc": "The streets surrounding the Egyptian Spice Bazaar are as interesting as the market itself — fishermen on Galata Bridge, stalls selling simit bread, ferries departing for the Bosphorus, and the full sensory experience of Istanbul's busiest and most characterful street life."
+        },
+        {
+          "place": "Gulhane Park",
+          "desc": "Istanbul's oldest public park occupies the former outer gardens of Topkapi Palace, offering shade and calm immediately beside the historic sites of Sultanahmet. The rose garden, tea houses, and views down to the Golden Horn make it an undervisited and thoroughly pleasant retreat."
+        },
+        {
+          "place": "Karakoy Waterfront",
+          "desc": "The neighbourhood at the base of the Galata Tower has transformed into one of Istanbul's most appealing areas — independent coffee shops, galleries, boutiques, and an excellent fish market along the Golden Horn waterfront, all with the Bridge and skyline beautifully in view."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Topkapi Palace",
+          "desc": "The administrative heart of the Ottoman Empire for 400 years, Topkapi contains extraordinary collections of Islamic relics, porcelain, miniature paintings, and the famous Topkapi Dagger. The harem section is equally fascinating, and the views from the palace terraces over the Bosphorus are unforgettable."
+        },
+        {
+          "place": "Grand Bazaar",
+          "desc": "One of the world's oldest and largest covered markets, with over 4,000 shops across 60 streets beneath painted vaulted ceilings. Carpets, gold jewellery, ceramics, spices, leather, and antiques fill every corridor — overwhelming, yes, but a genuinely great market experience."
+        },
+        {
+          "place": "Istanbul Modern",
+          "desc": "Turkey's first modern art museum moved to a striking new Renzo Piano-designed building on the Bosphorus waterfront in 2023. The collection of 20th and 21st-century Turkish art is excellent, the architecture is beautiful, and the restaurant views across the strait are exceptional."
+        },
+        {
+          "place": "Basilica Cistern",
+          "desc": "Beneath the streets of Sultanahmet lies a vast underground Roman water cistern from the 6th century, supported by 336 marble columns rising from shallow water. The atmospheric lighting and the famous Medusa column bases make it endlessly photogenic and genuinely eerie."
+        },
+        {
+          "place": "Pera Museum",
+          "desc": "A beautifully curated private museum in Beyoglu housing the renowned Orientalist painting collection alongside rotating exhibitions of modern and contemporary art. Osman Hamdi Bey's The Tortoise Trainer — a painting of quietly compelling power — is reason enough to make the journey."
+        }
+      ],
+      "night": [
+        {
+          "place": "Istiklal Avenue",
+          "desc": "Istanbul's great pedestrian boulevard runs 1.4 kilometres through the heart of Beyoglu, lined with restaurants, music shops, bookstores, cinemas, and the famous red nostalgic tram. At night it throngs with Istanbullus of every background and age, creating one of Europe's great urban promenades."
+        },
+        {
+          "place": "Bosphorus Dinner Cruise",
+          "desc": "Glide along the Bosphorus at night as illuminated Ottoman palaces, wooden yalis, Baroque mosques, and medieval fortresses drift past in sequence. The combination of Turkish food, live music, and the historic waterway under soft floodlights makes for a genuinely memorable Istanbul evening."
+        },
+        {
+          "place": "Beyoglu Meyhane",
+          "desc": "A meyhane is a traditional Turkish tavern, and Beyoglu's Cicek Pasaji and surrounding streets are lined with the finest examples. Slow mezes, raki, and live fasil music played by wandering musicians make for an evening that feels timeless and specifically, irreducibly Istanbul."
+        },
+        {
+          "place": "Galata Tower Night View",
+          "desc": "Climbing the medieval Galata Tower after dark rewards you with a 360-degree panorama across the Golden Horn to the minarets of Sultanahmet and out over the Bosphorus to the Asian shore. The city spread below in gold and white light is one of Europe's great night views."
+        }
+      ]
+    },
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "outdoor": [
+        {
+          "place": "Colosseum",
+          "desc": "The largest amphitheatre ever built and one of the world's most powerful pieces of architecture. Standing inside the Colosseum — imagining 50,000 Romans watching the spectacle below — creates a visceral connection with ancient history that no photograph or textbook has ever adequately conveyed."
+        },
+        {
+          "place": "Roman Forum",
+          "desc": "Once the centre of Roman civic life, the Forum is now a field of columns, arches, and temple foundations that requires imagination but rewards it greatly. Walk the Sacred Way where triumphing generals once marched and look up at the Capitoline Hill to orient yourself in deep time."
+        },
+        {
+          "place": "Villa Borghese Gardens",
+          "desc": "Rome's most beautiful park sits on a hill above the Piazza del Popolo, offering shaded avenues, small lakes, a famous sculpture museum, a cinema, and the best elevated views across the city's roofline and domes. A bicycle is the ideal way to explore it properly."
+        },
+        {
+          "place": "Trastevere Neighbourhood",
+          "desc": "Rome's most atmospheric neighbourhood is a medieval maze of ochre and terracotta buildings, ivy-draped walls, small piazzas with fountains, and trattorias with tables spilling onto cobbled streets. It retains the character of old Rome better than anywhere else, especially in the quiet mornings."
+        },
+        {
+          "place": "Piazza Navona",
+          "desc": "Built over the footprint of an ancient Roman stadium, Piazza Navona is one of Rome's great public spaces — long and oval, dominated by Bernini's spectacular Fountain of the Four Rivers. Street artists, cafés, and gelato stalls surround the perimeter in cheerful abundance."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Vatican Museums",
+          "desc": "One of the world's greatest museum complexes, culminating in the incomparable Sistine Chapel where Michelangelo's ceiling and The Last Judgement surround you simultaneously. The Gallery of Maps, the Raphael Rooms, and the extraordinary pinecone courtyard are among dozens of other highlights."
+        },
+        {
+          "place": "Galleria Borghese",
+          "desc": "Perhaps the finest small museum in the world — twelve rooms in a 17th-century villa containing Bernini's most virtuosic sculptures and Caravaggio's most dramatic paintings alongside Raphael, Titian, and Rubens. Timed entry keeps numbers limited; booking far in advance is absolutely essential."
+        },
+        {
+          "place": "Palazzo Altemps",
+          "desc": "A Renaissance palace housing one of Rome's most undervisited classical sculpture collections in rooms of extraordinary beauty. Ancient Greek and Roman statues stand in perfect scale with their surroundings, and the rooftop loggia offers lovely views over the Campo Marzio below."
+        },
+        {
+          "place": "Campo de' Fiori Market Hall",
+          "desc": "Every weekday morning the Campo de' Fiori hosts one of Rome's most colourful and characterful produce markets, with stalls piled high with seasonal vegetables, flowers, olives, cheese, and cured meats. The square dominated by the brooding statue of Giordano Bruno is always atmospheric."
+        },
+        {
+          "place": "Pantheon Interior",
+          "desc": "The world's best-preserved ancient building — a perfect hemisphere 43.3 metres in diameter, exactly equal to the height of the dome. The oculus at the apex opens to the sky, flooding the interior with a single column of moving light. After 1,900 years, it remains utterly flawless."
+        }
+      ],
+      "night": [
+        {
+          "place": "Trastevere Bar Hopping",
+          "desc": "Trastevere transforms at night into Rome's most atmospheric neighbourhood for an evening out — every small piazza has tables spilling from bars and trattorias, the narrow streets fill with people, and the warm golden light on old stone walls creates an irresistible atmosphere."
+        },
+        {
+          "place": "Trevi Fountain at Night",
+          "desc": "Floodlit against the night, the Trevi is at its most dramatic after dark when the illuminated water and baroque sculpture glow against the dark sky. Arriving in the early morning hours dramatically reduces the crowds and allows you to throw your coin in genuine atmosphere."
+        },
+        {
+          "place": "Pigneto Street Food",
+          "desc": "Rome's coolest neighbourhood is a former working-class area that has become the city's most interesting centre of alternative nightlife — wine bars, craft beer spots, excellent pizza by the slice, and a genuinely local crowd that has made Pigneto the authentic Roman evening destination of choice."
+        },
+        {
+          "place": "Rooftop Aperitivo",
+          "desc": "The Italian tradition of the aperitivo reaches its most spectacular form on Rome's rooftop bars, where a Campari Spritz comes with views of domes, umbrella pines, and terracotta rooftops stretching to the hills on the horizon — a ritual worth repeating every evening."
+        }
+      ]
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "outdoor": [
+        {
+          "place": "Giza Pyramids",
+          "desc": "The last surviving wonder of the ancient world and still one of humanity's most staggering achievements. Standing at the base of the Great Pyramid of Khufu — 138 metres of limestone blocks placed 4,500 years ago — produces a sense of scale and time that defies articulation."
+        },
+        {
+          "place": "Al-Azhar Park",
+          "desc": "Created on a site that was a garbage dump for centuries, Al-Azhar Park is now one of Cairo's most beautiful green spaces, set on a hill overlooking the minarets of Islamic Cairo. The views towards the Citadel and the medieval skyline from the terraces are extraordinary."
+        },
+        {
+          "place": "Khan el-Khalili Bazaar",
+          "desc": "Cairo's most famous market has been trading in the heart of Islamic Cairo since the 14th century. The narrow lanes wind past perfumers, spice merchants, and goldsmiths — including the legendary El Fishawy café, which has been open continuously for over 200 years."
+        },
+        {
+          "place": "Nile Corniche Walk",
+          "desc": "The broad promenade along the Nile's eastern bank is at its most pleasant in the late afternoon, when the heat softens and golden light falls across the river. Families gather on the grass, vendors sell karkadeh tea, and feluccas drift past in the amber glow."
+        },
+        {
+          "place": "Coptic Cairo District",
+          "desc": "A quiet enclave in southern Cairo containing some of the oldest Christian churches in the world, dating to the earliest centuries of the faith. The Hanging Church, the Ben Ezra Synagogue, and the Coptic Museum are gathered within a small area of extraordinary historical density."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Egyptian Museum",
+          "desc": "The old Egyptian Museum on Tahrir Square has the atmosphere of a Victorian treasure house — crowded cases, dim lighting, and artefacts of extraordinary significance in every direction. The Tutankhamun galleries — the golden death mask, the canopic jars, the jewellery — justify any visit."
+        },
+        {
+          "place": "Grand Egyptian Museum",
+          "desc": "The new Grand Egyptian Museum at Giza is the world's largest archaeological museum, built specifically to house Egypt's unparalleled collection of ancient artefacts. The complete Tutankhamun collection — all 5,000 objects — is displayed together here for the very first time in history."
+        },
+        {
+          "place": "Cairo Tower Observation Deck",
+          "desc": "The 187-metre modernist tower on Gezira Island offers 360-degree views over the entire Cairo metropolitan area — the Pyramids of Giza on the western horizon, the Nile threading through the city below, and the dense urban sprawl stretching in every direction to the desert edges."
+        },
+        {
+          "place": "Wikala of al-Ghuri",
+          "desc": "A beautifully preserved Mamluk-era caravanserai converted into a cultural centre, hosting traditional whirling dervish performances and Egyptian folk music evenings in an authentic historical setting. The courtyard architecture is excellent and the cultural programming makes it one of Islamic Cairo's most valuable experiences."
+        },
+        {
+          "place": "City Stars Mall",
+          "desc": "One of the largest shopping malls in Africa and the Middle East, City Stars offers reliable air conditioning, international food chains, a cinema, and hundreds of shops. When Cairo's heat, traffic, and sensory intensity reach their peak, it provides a predictable and comfortable refuge."
+        }
+      ],
+      "night": [
+        {
+          "place": "Nile Dinner Cruise",
+          "desc": "Board a large boat on the Nile for an evening of Egyptian food, belly dancing performances, folk music, and spectacular views of the illuminated Cairo Corniche. The combination of the river, the city lights, and the live entertainment makes for a genuinely atmospheric evening."
+        },
+        {
+          "place": "Zamalek Rooftop Bars",
+          "desc": "The Nile island neighbourhood of Zamalek is Cairo's most elegant and international area, with several excellent rooftop bars and restaurants offering views across the river to both shores. The ambience is considerably calmer than downtown Cairo and all the better for it."
+        },
+        {
+          "place": "Sound & Light Show Giza",
+          "desc": "The Pyramids and Sphinx narrate their own history as coloured lights illuminate the ancient stones and a dramatic soundtrack fills the desert air. It is unashamedly theatrical, but watching the Pyramids change colour in the darkness of the Sahara is a remarkable and unique experience."
+        },
+        {
+          "place": "Tahrir Square at Night",
+          "desc": "Cairo's most historically significant square pulses with energy long after dark — traffic circling the roundabout, food vendors operating from carts, and the constant movement of a city that never truly sleeps. It is raw, unpolished, and completely authentic Cairo at its most alive."
+        }
+      ]
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "outdoor": [
+        {
+          "place": "Marine Drive",
+          "desc": "The Queen's Necklace — a 3.6-kilometre curved seafront boulevard along the Arabian Sea, flanked by Art Deco buildings and wide pavements. At sunset the sky turns extraordinary colours above the water; at night the streetlamps trace the arc of the bay in a string of golden light."
+        },
+        {
+          "place": "Gateway of India",
+          "desc": "Mumbai's most iconic landmark, a magnificent basalt arch built to commemorate King George V's 1911 visit, standing watch over the harbour. The waterfront around it is endlessly animated — boat trips to Elephanta depart from here, and the evening crowds make it a great people-watching spot."
+        },
+        {
+          "place": "Elephanta Island",
+          "desc": "A one-hour ferry from the Gateway brings you to this UNESCO-listed island of cave temples dedicated to Shiva, carved from solid rock between the 5th and 8th centuries. The main Trimurti sculpture — three faces of Shiva at near-monumental scale — is one of the great works of Indian art."
+        },
+        {
+          "place": "Juhu Beach",
+          "desc": "Mumbai's most popular beach comes alive at weekends with families, kite flyers, cricket matches on the sand, and the greatest concentration of street food anywhere in the city. Pav bhaji, bhel puri, and vada pav stalls line the promenade as the sun sets over the Arabian Sea."
+        },
+        {
+          "place": "Dharavi Art District",
+          "desc": "Beyond the familiar narratives about Dharavi lies a thriving creative community — murals by local and international artists cover the walls of workshops producing leather goods, pottery, and textiles. Walking tours led by local guides offer a genuine and respectful alternative perspective on this complex place."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Chhatrapati Shivaji Maharaj Museum",
+          "desc": "Housed in an outstanding Indo-Saracenic building from 1923, Mumbai's premier museum holds impressive collections of Indian art, natural history, armoury, and decorative objects. The Mughal and Rajput miniature painting galleries are among the finest in the country — the garden café is a lovely bonus."
+        },
+        {
+          "place": "Dhobi Ghat",
+          "desc": "The world's largest open-air laundry is best viewed from the bridge on Dr. E Moses Road, where hundreds of washermen beat, scrub, and dry thousands of garments in the sunken concrete washing pens below. It is an extraordinary and surprisingly beautiful sight in the heart of the city."
+        },
+        {
+          "place": "Chor Bazaar",
+          "desc": "Mumbai's famous Thieves' Market is a maze of small shops selling antiques, vintage furniture, old Bollywood posters, gramophone parts, and curious objects of uncertain provenance. The pleasure is in not knowing quite what you'll find — or where it came from — around each corner."
+        },
+        {
+          "place": "Palladium Mall",
+          "desc": "Mumbai's most upscale shopping destination in Lower Parel, housed in a striking building within the High Street Phoenix complex. Beyond the international luxury brands, the food options are some of the best in the city, and the general curation is noticeably higher than most malls."
+        },
+        {
+          "place": "National Gallery of Modern Art",
+          "desc": "Housed in a former public hall, Mumbai's NGMA holds one of the finest collections of modern Indian art in the country, with particular strength in Progressive and Bengal School works. The rotating temporary exhibitions frequently showcase important contemporary Indian artists alongside the significant permanent collection."
+        }
+      ],
+      "night": [
+        {
+          "place": "Bandra-Worli Sea Link Night",
+          "desc": "The cable-stayed bridge connecting Bandra and Worli across Mahim Bay is extraordinary at night — 8 cables lit in white light, the Arabian Sea below, and the Mumbai skyline on either shore. The best view is from the Bandra end; the drive across is equally spectacular."
+        },
+        {
+          "place": "Colaba Causeway Night",
+          "desc": "The stretch of Colaba Causeway south of the Gateway becomes particularly lively at night, when street vendors, antique shops, cafés, and the famous Leopold Café all operate simultaneously in one of Mumbai's most historically layered and socially mixed neighbourhoods."
+        },
+        {
+          "place": "Marine Lines Night Walk",
+          "desc": "Walking the full length of Marine Drive after dark, with the city lights reflected in the sea and the Art Deco buildings illuminated along the boulevard, is one of Mumbai's great simple pleasures. The promenade fills with local families, couples, and joggers who have claimed it as their own."
+        },
+        {
+          "place": "Todi Mill Social",
+          "desc": "Set within the beautifully repurposed Todi Mills complex in Lower Parel, Social is a co-working space by day that transforms into a full bar and restaurant after dark, with an excellent cocktail programme and the industrial architecture of the old mill all around."
+        }
+      ]
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "outdoor": [
+        {
+          "place": "Vondelpark",
+          "desc": "Amsterdam's most beloved park is 47 hectares of English landscape garden at the heart of the city, used by cyclists, sunbathers, picnickers, and roller skaters with equal democratic enthusiasm. On summer weekends it becomes a vast outdoor living room — warm, chaotic, and completely wonderful."
+        },
+        {
+          "place": "Canal Ring Walk",
+          "desc": "Amsterdam's UNESCO-listed canal ring is best explored on foot, crossing the arched bridges that connect the Herengracht, Keizersgracht, and Prinsengracht. The 17th-century merchant houses reflected in still water, and the constant bicycle traffic create an atmosphere unique to this remarkable city."
+        },
+        {
+          "place": "Keukenhof Gardens",
+          "desc": "Open only from March to May, Keukenhof is the world's most spectacular flower garden — 79 hectares planted with seven million bulbs that bloom simultaneously in a riot of tulips, daffodils, hyacinths, and narcissi. The photographs barely do justice to the scale of colour and fragrance."
+        },
+        {
+          "place": "Jordaan Neighbourhood",
+          "desc": "Amsterdam's most characterful neighbourhood is a grid of narrow streets and small canals lined with independent boutiques, specialist food shops, antique dealers, and excellent cafés. The Saturday Noordermarkt farmers' market and the Sunday antiques market add further reasons to spend an entire day exploring here."
+        },
+        {
+          "place": "NDSM Wharf",
+          "desc": "A former shipyard north of the IJ river transformed into Amsterdam's most creative neighbourhood — enormous murals cover the warehouses, a flea market runs on weekends, alternative clubs occupy the industrial spaces, and the ferry ride across from Central Station is completely free."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Rijksmuseum",
+          "desc": "The Netherlands' national museum holds one of the world's great art collections — Rembrandt's Night Watch, Vermeer's The Milkmaid, and hundreds of other Golden Age masterworks in a vast Victorian Gothic building. The Asian and Delftware collections are equally impressive and far less crowded."
+        },
+        {
+          "place": "Van Gogh Museum",
+          "desc": "The world's largest collection of Van Gogh's work — over 200 paintings and 500 drawings — presented chronologically to trace his artistic development with extraordinary clarity. The contrast between his early dark Dutch works and the explosive colour of the Arles and Saint-Rémy periods is revelatory."
+        },
+        {
+          "place": "Anne Frank House",
+          "desc": "The house where Anne Frank and her family hid for two years before their arrest in 1944 is one of the most moving historical sites in Europe. The deliberately sparse rooms, the original diary pages, and the preserved hiding place create a sobering and deeply affecting experience."
+        },
+        {
+          "place": "Amsterdam Dungeon",
+          "desc": "A theatrical walk-through experience bringing Amsterdam's darkest historical moments to life with live actors, special effects, and period sets covering plague, the Spanish Inquisition, and the city's criminal history. It is deliberately over the top but genuinely entertaining and more historically grounded than you might expect."
+        },
+        {
+          "place": "De Hallen Food Hall",
+          "desc": "A beautifully converted tram depot in the Oud-West neighbourhood housing a vibrant indoor food market with dozens of stalls, a cinema, a hotel, and independent shops. The food quality is consistently high and the industrial brick architecture has been preserved with admirable sensitivity."
+        }
+      ],
+      "night": [
+        {
+          "place": "Leidseplein Bar Square",
+          "desc": "Amsterdam's most energetic nightlife square is surrounded by bars, clubs, and live music venues that stay open until the small hours. The Paradiso and Melkweg music venues are nearby; the square itself has a convivial, genuinely pan-European atmosphere that makes it easy to stay well past midnight."
+        },
+        {
+          "place": "Canal Cruise at Night",
+          "desc": "Taking a boat through Amsterdam's canals after dark reveals a city that transforms entirely — the gabled houses are illuminated, the arched bridges glow, and the reflections in the still water create a doubled, dreamlike version of the city that is even more beautiful than the daytime original."
+        },
+        {
+          "place": "Paradiso Music Venue",
+          "desc": "A consecrated 19th-century church converted into one of Europe's finest mid-sized music venues — the stained glass and vaulted ceiling remain while the stage hosts everyone from international touring bands to local DJs. The acoustics, programming, and atmosphere make it one of Amsterdam's greatest cultural treasures."
+        },
+        {
+          "place": "Genever Tasting Café",
+          "desc": "Traditional Dutch gin-tasting houses — some dating to the 17th century — are one of Amsterdam's most distinctive and undervisited pleasures. Order a tulip glass of aged genever at the bar, bend over it to take the first sip without lifting it, and drink as generations have drunk before you."
+        }
+      ]
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "outdoor": [
+        {
+          "place": "Nairobi National Park",
+          "desc": "The only national park in the world sharing a fence with a capital city — lions, cheetahs, rhinos, and giraffes roam grasslands with the Nairobi skyline as their backdrop. Early morning game drives from just 7 kilometres from the city centre produce wildlife sightings of extraordinary quality."
+        },
+        {
+          "place": "Karura Forest",
+          "desc": "A remarkable urban forest reserve of 1,000 hectares within Nairobi city limits, with well-maintained walking and cycling trails, waterfalls, caves, and the kind of dense canopy that makes the city completely disappear. It is one of the finest urban nature reserves in all of Africa."
+        },
+        {
+          "place": "Giraffe Centre",
+          "desc": "The African Fund for Endangered Wildlife's sanctuary for Rothschild giraffes allows visitors to feed the animals from a raised platform at exactly giraffe-head height. The experience of looking a giraffe directly in its large, gentle eyes while it takes pellets from your hand is genuinely extraordinary."
+        },
+        {
+          "place": "Maasai Market",
+          "desc": "A rotating open-air craft market that moves to different locations across the city on different days — beadwork, wood carving, Maasai jewellery, soapstone figures, and textiles at prices that reward confident but respectful bargaining. An entirely essential and thoroughly enjoyable Nairobi shopping experience."
+        },
+        {
+          "place": "Nairobi Arboretum",
+          "desc": "Established in 1907, this 30-hectare arboretum near the CBD contains over 350 tree species from across Kenya and the world, connected by peaceful walking paths. It is a lovely, uncrowded green escape — far less visited than Karura but entirely worth the short journey from the city centre."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Nairobi National Museum",
+          "desc": "Kenya's flagship museum covers natural history, cultural heritage, geology, and contemporary art across several buildings set in pleasant grounds. The exhibits on Kenya's human origins and the evolution gallery are genuinely impressive and carefully curated — the Snake Park and adjacent aquarium add further interest."
+        },
+        {
+          "place": "Karen Blixen Museum",
+          "desc": "The farmhouse where Isak Dinesen wrote Out of Africa is beautifully preserved in the leafy Karen suburb, surrounded by the same coffee-growing foothills she described. The guided tour through the original rooms and period furnishings brings the memoir and the woman who wrote it movingly to life."
+        },
+        {
+          "place": "Westgate Mall",
+          "desc": "Nairobi's most upscale mall in Westlands houses a good selection of international brands, excellent restaurants, a cinema, and a supermarket with the best range of Kenyan and international food products in the city. The rooftop terrace offers pleasant views across the leafy Westlands neighbourhood."
+        },
+        {
+          "place": "David Sheldrick Wildlife Trust",
+          "desc": "Every morning between 11am and noon, orphaned baby elephants from across Kenya are brought out for feeding and socialising at the Sheldrick Trust's Nairobi nursery. The sight of several small elephants mud-bathing, chasing each other, and interacting with their keepers is completely overwhelming in the best possible way."
+        },
+        {
+          "place": "GoDown Arts Centre",
+          "desc": "Nairobi's most important contemporary arts space — a former industrial warehouse now hosting gallery exhibitions, theatre productions, music events, film screenings, and an annual arts festival. The programming is genuinely experimental and represents the best of Nairobi's remarkably vibrant and internationally connected creative community."
+        }
+      ],
+      "night": [
+        {
+          "place": "Westlands Nightlife Strip",
+          "desc": "The Westlands neighbourhood is Nairobi's primary nightlife district — a concentration of bars, clubs, and restaurants along Woodvale Grove and surrounding streets that stays energetic until late. The crowd is young and international; the music ranges from Afrobeats to hip-hop to excellent live bands."
+        },
+        {
+          "place": "The Alchemist Bar",
+          "desc": "A brilliantly conceived container bar and events space in Westlands that has become one of Nairobi's favourite gathering places. Live music, DJs, food trucks, and pop-up markets fill the open-air central space, while the surrounding shipping container bars serve creative cocktails to a wonderfully diverse crowd."
+        },
+        {
+          "place": "Carnivore Restaurant",
+          "desc": "One of Africa's most famous restaurants has been serving vast quantities of nyama choma — roasted meats including game — since 1980. The waiters circle continuously with swords of meat, the outdoor setting is atmospheric, and the experience is festive, generously portioned, and quintessentially Nairobi."
+        },
+        {
+          "place": "Kiza Lounge",
+          "desc": "An upmarket lounge and club in Kilimani that combines a sophisticated cocktail bar with a restaurant and a rooftop terrace offering views across Nairobi's leafy suburbs. The programming leans heavily on Afrobeats and R&B, making it one of the city's most consistently enjoyable late-night venues."
+        }
+      ]
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "outdoor": [
+        {
+          "place": "Ibirapuera Park",
+          "desc": "São Paulo's most beloved park — 1.6 million square metres of green space designed by Roberto Burle Marx and Oscar Niemeyer, containing several museums, a planetarium, and vast open lawns. On Sunday mornings the cycling lanes fill and the whole city seems to exhale here collectively."
+        },
+        {
+          "place": "Paulista Avenue",
+          "desc": "The great artery of São Paulo — on Sundays the entire 2.8-kilometre boulevard closes to traffic and fills with cyclists, skaters, street performers, and book markets. The concentration of museums, cultural institutions, and art galleries along the avenue is remarkable and entirely worth a full day of exploration."
+        },
+        {
+          "place": "Vila Madalena Murals",
+          "desc": "The Beco do Batman alley in Vila Madalena has been covered in an ever-changing succession of murals by Brazilian and international street artists since the 1980s. The surrounding neighbourhood is equally interesting — full of independent galleries, bars, and some of the city's most creative culture."
+        },
+        {
+          "place": "Mercadão Municipal",
+          "desc": "The Municipal Market of São Paulo is housed in a magnificent early 20th-century building with extraordinary Art Nouveau stained glass windows depicting scenes of Brazilian agriculture. The mortadella sandwich eaten at the upper mezzanine is an essential São Paulo experience not to be missed."
+        },
+        {
+          "place": "Jardim Botânico",
+          "desc": "São Paulo's botanical garden in the Água Funda neighbourhood covers 340 hectares of Atlantic Forest, with a greenhouse of rare orchids, a beautiful Japanese garden, and walking trails through preserved native forest. It provides a genuinely lush and peaceful escape from the dense urban intensity surrounding it."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "MASP Museum",
+          "desc": "The Museu de Arte de São Paulo is one of Latin America's most important art museums, housed in a striking concrete and glass building suspended above Paulista Avenue on four red concrete pillars. The collection spans European masters, Brazilian art, and African and Asian decorative arts in excellent depth."
+        },
+        {
+          "place": "Pinacoteca do Estado",
+          "desc": "Brazil's oldest fine arts museum occupies a beautiful late-19th-century building in the historic Luz neighbourhood, housing the country's finest collection of Brazilian painting and sculpture. The sculpture courtyard and connecting skybridge to the Pinacoteca Contemporânea are particularly notable architectural highlights worth seeing."
+        },
+        {
+          "place": "Instituto Moreira Salles",
+          "desc": "The São Paulo outpost of the IMS is a stunning Marcio Kogan-designed building dedicated to photography, music, literature, and film. The permanent collection of Brazilian photography is superb, and the architecture — a rectangular volume floating above a reflecting pool — is among the finest in the city."
+        },
+        {
+          "place": "Shopping Iguatemi",
+          "desc": "Brazil's first and most prestigious shopping mall — opened in 1966 on Faria Lima Avenue — continues to anchor São Paulo's luxury retail scene. Beyond the international designer shops, the food hall and independent Brazilian brand boutiques inside reflect the genuine sophistication of São Paulo's commercial culture."
+        },
+        {
+          "place": "Museu do Futebol",
+          "desc": "Housed beneath the stands of the historic Pacaembu Stadium, this extraordinary museum uses immersive technology, film, and objects to tell the story of Brazilian football culture — its joy, its artistry, its social dimensions, and its transcendent moments. Even non-football fans emerge deeply moved and informed."
+        }
+      ],
+      "night": [
+        {
+          "place": "Vila Olímpia Rooftop Bars",
+          "desc": "São Paulo's most upscale nightlife neighbourhood concentrates excellent rooftop bars, Michelin-starred restaurants, and sophisticated cocktail lounges along its wide, tree-lined streets. The crowd is well-dressed and the views across the city's endless skyline from the better rooftops are genuinely impressive and memorable."
+        },
+        {
+          "place": "Beco do Batman at Night",
+          "desc": "The famous mural alley in Vila Madalena takes on a completely different character after dark, when streetlights illuminate the artwork dramatically and the surrounding bars fill with the neighbourhood's creative community. The contrast between the street art and the nightlife energy around it is always striking."
+        },
+        {
+          "place": "Skye Bar Hotel Unique",
+          "desc": "Perched atop the Hotel Unique — a curved building shaped like a watermelon slice — the Skye Bar pool terrace offers extraordinary views across São Paulo's vast, illuminated skyline. The red circle-windowed façade, the pool water reflecting the sky, and the cocktails make it one of the city's great rooftop experiences."
+        },
+        {
+          "place": "Bourbon Street Jazz Club",
+          "desc": "A long-running São Paulo institution on Rua dos Chanés dedicated to jazz, blues, and Brazilian music performed live by some of the city's finest musicians. The intimate room, excellent sound system, and consistent quality of programming make it one of the best jazz venues in all of South America."
+        }
+      ]
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "outdoor": [
+        {
+          "place": "Toronto Islands",
+          "desc": "A short ferry ride from downtown, the car-free Toronto Islands offer beaches, picnic grounds, a small amusement park, and extraordinary views back across the water to the CN Tower and city skyline. Centre Island and Ward's Island each have a distinct character worth exploring across a full day."
+        },
+        {
+          "place": "Distillery District",
+          "desc": "The largest and best-preserved collection of Victorian industrial architecture in North America, now home to art galleries, independent restaurants, boutiques, and the TIFF Bell Lightbox. The cobblestone lanes and red-brick distillery buildings create an atmosphere genuinely unlike anything else in the city."
+        },
+        {
+          "place": "Kensington Market",
+          "desc": "Toronto's most eccentric and beloved neighbourhood is a dense concentration of vintage clothing shops, independent food stores, global street food, murals, and the kind of organic, constantly evolving street culture that makes it impossible to predict what you will encounter on any given afternoon."
+        },
+        {
+          "place": "High Park",
+          "desc": "Toronto's largest public park at 161 hectares contains a zoo, swimming pools, sports fields, a historic garden, and the cherry blossom grove that draws thousands of visitors each spring. The wooded ravine trails provide genuinely wild-feeling walking just minutes from the city centre."
+        },
+        {
+          "place": "St. Lawrence Market Area",
+          "desc": "Toronto's most historic market building sits in the heart of the old town, surrounded by streets of Victorian commercial architecture. The Saturday farmers' market is exceptional; the surrounding neighbourhood with Berczy Park, the Flatiron Building, and the nearby waterfront is among the most pleasant in the city to walk."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Royal Ontario Museum",
+          "desc": "Canada's largest museum of natural history and world culture, dramatically expanded with Daniel Libeskind's angular Crystal addition in 2007. The ancient Egypt gallery, the dinosaur halls, the Chinese art collection, and the stunning First Peoples gallery covering Canadian Indigenous cultures are among the many highlights."
+        },
+        {
+          "place": "Art Gallery of Ontario",
+          "desc": "Frank Gehry's reimagined AGO is one of Canada's most important art museums, with exceptional holdings of Canadian art — Tom Thomson, the Group of Seven, Indigenous art — alongside European masterworks and an outstanding Henry Moore sculpture collection. The Gehry-designed wooden spiral staircase is extraordinary."
+        },
+        {
+          "place": "CN Tower EdgeWalk",
+          "desc": "The world's highest full-circle hands-free walk sits 356 metres above Toronto on the outside of the CN Tower's main pod. Participants are harnessed to a guardrail and walk the full circumference with the city and Lake Ontario breathtakingly far below — genuinely not for the faint-hearted."
+        },
+        {
+          "place": "Ripley's Aquarium",
+          "desc": "Canada's largest aquarium sits directly beneath the CN Tower and contains 13,500 aquatic animals across themed habitats. The extraordinary Dangerous Lagoon — a 97-metre moving walkway tunnel through a tank containing sharks, sawfish, and giant sea turtles — is the undisputed highlight of the entire visit."
+        },
+        {
+          "place": "Eaton Centre",
+          "desc": "Toronto's iconic downtown shopping mall runs the length of two city blocks under a magnificent barrel-vaulted glass roof. Michael Snow's flock of fibreglass Canada geese suspended from the ceiling is one of the city's best-known artworks, and the mall below remains one of North America's most visited retail destinations."
+        }
+      ],
+      "night": [
+        {
+          "place": "King Street West Bars",
+          "desc": "Toronto's most celebrated nightlife strip runs along King Street West through the Entertainment District. Restaurant groups, craft cocktail bars, live music venues, and clubs of every type jostle for attention along a stretch that stays busy and interesting until the early hours of the morning."
+        },
+        {
+          "place": "CN Tower 360 Restaurant",
+          "desc": "Dining in the world's highest revolving restaurant — completing one full rotation every 72 minutes at 351 metres — is an undeniable spectacle. The view of Lake Ontario, the Niagara Escarpment on the horizon, and the city grid below is extraordinary and entirely worth the experience."
+        },
+        {
+          "place": "Harbourfront Night",
+          "desc": "Toronto's lakefront comes alive on summer evenings with free outdoor concerts, film screenings, and artist studios open to the public. The Queen's Quay boardwalk is one of the city's great evening walks, watching Lake Ontario darken as the lakeshore lights illuminate behind you."
+        },
+        {
+          "place": "Kensington Market After Dark",
+          "desc": "The Market's daytime bohemian energy transforms after dark into one of Toronto's most genuinely local nightlife scenes — small bars in converted houses, a jazz club in a historic building, a craft brewery, and the kind of intimate neighbourhood-scaled socialising that the rest of the city struggles to replicate."
+        }
+      ]
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "outdoor": [
+        {
+          "place": "Gyeongbokgung Palace",
+          "desc": "The grandest of Seoul's five Joseon dynasty palaces, surrounded by mountains on three sides and fronted by the wide Gwanghwamun plaza. The changing of the guard ceremony at the main gate is spectacular; the palace grounds contain the National Folk Museum and a beautiful lotus pond garden."
+        },
+        {
+          "place": "Bukhansan National Park",
+          "desc": "A remarkable national park of granite peaks and Buddhist temples immediately within Seoul city limits, offering challenging trails with extraordinary views over the entire metropolitan area. The hike to Baegundae peak at 836 metres rewards serious effort with one of the most spectacular urban viewpoints in Asia."
+        },
+        {
+          "place": "Cheonggyecheon Stream",
+          "desc": "An elevated motorway was demolished to restore this ancient stream running through the heart of Seoul. The 11-kilometre waterway is now a beloved public space — people sit on the granite steps along the bank, cool their feet in the water, and walk the full length through the city."
+        },
+        {
+          "place": "Hongdae Street",
+          "desc": "The streets around Hongik University are the creative heart of Seoul — independent music venues, street buskers performing on the main plaza, independent fashion boutiques, art galleries, and the kind of young, inventive energy that makes Hongdae one of the most interesting urban neighbourhoods in all of Asia."
+        },
+        {
+          "place": "Namsan Park",
+          "desc": "A forested hill rising 243 metres above central Seoul, accessible by cable car or a pleasant walking path, topped by N Seoul Tower — a landmark visible across the city. The wooded trails, traditional Korean architecture pavilions, and the panoramic views from the tower make it an essential Seoul visit."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "National Museum of Korea",
+          "desc": "One of Asia's great museums, occupying a magnificent building in Yongsan with 13,000 artefacts on permanent display covering Korea's history from the Palaeolithic to the Joseon dynasty. The central hall's towering display of pagoda stonework and the exquisite gold Silla crown are genuinely breathtaking highlights."
+        },
+        {
+          "place": "Leeum Samsung Museum",
+          "desc": "Three separate buildings designed by Mario Botta, Jean Nouvel, and Rem Koolhaas house a collection of extraordinary range — Korean celadon ceramics and royal portraits in one section; international contemporary art by Warhol, Hirst, and Koons in another. The architecture alone is worth the journey to Hannam-dong."
+        },
+        {
+          "place": "Dongdaemun Design Plaza",
+          "desc": "Zaha Hadid's most ambitious Korean project is a sweeping, crater-like structure of 45,000 aluminium panels housing design exhibitions, fashion shows, and a 24-hour shopping district. The building's fluid, non-rectilinear forms look unlike anything else in a city already full of extraordinary contemporary architecture."
+        },
+        {
+          "place": "Coex Mall Starfield Library",
+          "desc": "Inside the enormous Coex underground mall in Gangnam, the Starfield Library is a soaring two-storey space with 50,000 books lining walls that rise 13 metres — one of the most visually dramatic public spaces in Seoul, entirely open to anyone who wishes to sit, read, or simply look."
+        },
+        {
+          "place": "Gwangjang Market",
+          "desc": "Established in 1905, Seoul's oldest surviving traditional market is most famous for its food hall — a permanent indoor bazaar of stalls serving bindaetteok mung bean pancakes, mayak gimbap, raw beef yukhoe, and spicy rice cakes. Eating here feels completely authentic, unperformed, and genuinely delicious."
+        }
+      ],
+      "night": [
+        {
+          "place": "Itaewon Nightlife",
+          "desc": "Seoul's most international neighbourhood has long been the city's most open and diverse nightlife district, with bars, clubs, and restaurants representing dozens of nationalities along its hilly streets. The stretch down towards Gyeongnidan-gil contains some of the city's most interesting and independently operated bars."
+        },
+        {
+          "place": "N Seoul Tower at Night",
+          "desc": "The tower at the peak of Namsan is illuminated in changing colours at night, visible across the entire Seoul basin. At the top, the observation deck shows the city spreading in every direction to the mountains on the horizon — a sea of light that makes Seoul's true scale finally comprehensible."
+        },
+        {
+          "place": "Banpo Bridge Rainbow Fountain",
+          "desc": "The world's longest bridge fountain runs along both sides of Banpo Bridge on the Han River, shooting 190 tonnes of water per minute in choreographed sequences to music and coloured light. The evening shows attract large crowds to the riverside parks on both banks in genuine, collective delight."
+        },
+        {
+          "place": "Gangnam Rooftop Bars",
+          "desc": "The skyscrapers of Gangnam and Yeouido house some of Seoul's most sophisticated rooftop bars — polished spaces offering excellent cocktails and panoramic views across the Han River and the city beyond. The atmosphere is considerably more refined and less frenetic than the nightlife districts north of the river."
+        }
+      ]
+    },
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "outdoor": [
+        {
+          "place": "Table Mountain",
+          "desc": "The flat-topped sandstone mountain dominating Cape Town's skyline is one of the world's most recognisable natural landmarks. Take the rotating cable car or hike one of several trails to the summit for views across the Cape Peninsula, both oceans, and the city bowl 1,086 metres below."
+        },
+        {
+          "place": "Boulders Beach Penguins",
+          "desc": "A colony of 3,000 African penguins lives on the bouldered beach near Simon's Town, and boardwalks allow visitors to get remarkably close to these comically dignified birds. Watching them waddle, swim, and squabble among granite boulders with the ocean as backdrop is an experience of pure, uncomplicated delight."
+        },
+        {
+          "place": "Cape Point",
+          "desc": "The southwestern tip of the Cape Peninsula — dramatic sheer cliffs falling into the churning sea where the warm Agulhas and cold Benguela currents meet. The old lighthouse perched at the top offers one of the most wild and elemental views available anywhere on the African continent."
+        },
+        {
+          "place": "V&A Waterfront",
+          "desc": "Cape Town's working harbour redeveloped into one of Africa's most attractive waterfront precincts — restaurants, boutiques, the Two Oceans Aquarium, and the Cape Wheel, all set against the backdrop of Table Mountain and the working docks. The setting at sunset is genuinely hard to fault."
+        },
+        {
+          "place": "Kirstenbosch Gardens",
+          "desc": "Widely regarded as one of the world's great botanical gardens, Kirstenbosch occupies the eastern slopes of Table Mountain with 7,000 plant species, many of them endemic to the Cape Floristic Region. The treetop canopy walkway and the summer Sunday outdoor concerts are particularly excellent experiences."
+        }
+      ],
+      "indoor": [
+        {
+          "place": "Zeitz MOCAA",
+          "desc": "Africa's largest museum of contemporary art, carved from a historic grain silo complex at the V&A Waterfront by Heatherwick Studio. The atrium — excavated from the cylindrical silo tubes — is one of the most dramatic interior spaces in Africa, and the exhibition programme is consistently ambitious."
+        },
+        {
+          "place": "District Six Museum",
+          "desc": "One of the most important and affecting museums in South Africa, documenting the forced removal of 60,000 people from the District Six neighbourhood under apartheid. Voices of former residents are embedded throughout the displays, and walking across the floor map of the demolished area is deeply moving."
+        },
+        {
+          "place": "Two Oceans Aquarium",
+          "desc": "Named for the two oceans that meet at the Cape, the aquarium houses species from both the cold Atlantic and the warm Indian Ocean in one remarkable facility. The kelp forest tank is the most beautiful; the open ocean exhibit with its sharks and rays is the most dramatic."
+        },
+        {
+          "place": "Old Biscuit Mill Market",
+          "desc": "Every Saturday morning the Old Biscuit Mill in Woodstock hosts the Neighbourgoods Market — one of the finest artisan food markets in Africa, with Cape Winelands producers, craft beer, excellent coffee, and an extraordinary range of South African food culture gathered in a beautiful converted industrial space."
+        },
+        {
+          "place": "Watershed Market",
+          "desc": "The V&A Waterfront's indoor market brings together over 150 South African designers, craftspeople, and food producers under one roof. The handmade goods — ceramics, textiles, jewellery, leatherwork — represent genuinely high-quality South African design, and the setting overlooking the working harbour is excellent."
+        }
+      ],
+      "night": [
+        {
+          "place": "Long Street Bar Crawl",
+          "desc": "Cape Town's most legendary party street runs through the heart of the City Bowl, lined with clubs, live music venues, rooftop bars, and the kind of chaotic, multinational energy that makes it one of Africa's most celebrated nightlife streets. It starts late and ends when the sun comes up."
+        },
+        {
+          "place": "Camps Bay Sundowners",
+          "desc": "The strip of restaurants and bars lining Camps Bay beach faces directly west across the Atlantic Ocean, making it the finest location in Cape Town to watch the sun set into the sea. The backdrop of the Twelve Apostles mountain range above and the white beach below makes it incomparable."
+        },
+        {
+          "place": "Signal Hill Night View",
+          "desc": "The road to the Signal Hill summit is open at night, offering one of Cape Town's finest free viewpoints — the city bowl below glowing in golden light, the V&A Waterfront outlined by its own illumination, and Table Mountain a dark silhouette against the night sky above everything."
+        },
+        {
+          "place": "The Silo Rooftop Bar",
+          "desc": "Perched atop the Royal Portfolio's Silo Hotel — built within a converted historic grain elevator — the rooftop bar offers an intimate and sophisticated evening with perhaps the finest elevated views of Table Mountain and the V&A Waterfront available from any bar in the city."
+        }
+      ]
+    }
+  ]
+}

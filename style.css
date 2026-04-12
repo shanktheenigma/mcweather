@@ -324,8 +324,13 @@ nav {
 .currentTime {
   color: var(--text-dim);
   font-family: Public Sans;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 18px;
+}
+
+.estWeather {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .avgTemp {
@@ -1027,11 +1032,170 @@ nav {
 }
 
 .savedEmpty {
+  font-family: Fira Sans;
   text-align: center;
   color: var(--text-muted);
   font-size: 14px;
   padding: 30px 0;
   line-height: 1.8;
+}
+
+.ps-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.ps-tabs {
+  display: flex;
+  gap: 6px;
+}
+.ps-tab {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: Public Sans;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ps-tab.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.ps-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.badge-outdoor {
+  background: #eaf3de;
+  color: #3b6d11;
+}
+.badge-indoor {
+  background: #e6f1fb;
+  color: #185fa5;
+}
+.badge-night {
+  background: #eeedfe;
+  color: #534ab7;
+}
+.psCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.psCard {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 130px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.psCard:hover {
+  background: var(--glass-hover);
+  /* transform: translateY(-2px); */
+}
+.psCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 18px;
+  pointer-events: none;
+}
+.psCard.outdoor::before {
+  background: radial-gradient(
+    circle at top right,
+    rgba(99, 153, 34, 0.18),
+    transparent 70%
+  );
+}
+.psCard.indoor::before {
+  background: radial-gradient(
+    circle at top right,
+    rgba(55, 138, 221, 0.18),
+    transparent 70%
+  );
+}
+.psCard.night::before {
+  background: radial-gradient(
+    circle at top right,
+    rgba(127, 119, 221, 0.18),
+    transparent 70%
+  );
+}
+.psCard:hover::before {
+  opacity: 1;
+}
+.ps-shimmer {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.06;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.psCard.outdoor .ps-shimmer {
+  background: #a3e635;
+}
+.psCard.indoor .ps-shimmer {
+  background: #60a5fa;
+}
+.psCard.night .ps-shimmer {
+  background: #a78bfa;
+}
+.psCard:hover .ps-shimmer {
+  opacity: 0.13;
+}
+.ps-number {
+  font-size: 28px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.07);
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.psPlace {
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+.psCards .desc {
+  font-family: Fira Sans;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
 }
 
 /* Small Laptop */
@@ -1642,5 +1806,28 @@ nav {
   .savedEmpty {
     font-size: 13px;
     padding: 20px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .psCards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .psCard {
+    min-height: 110px;
+    padding: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .psCards {
+    grid-template-columns: 1fr;
+  }
+  .psCard {
+    min-height: 90px;
+    padding: 12px;
+  }
+  .ps-number {
+    font-size: 22px;
   }
 }

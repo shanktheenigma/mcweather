@@ -15,7 +15,6 @@ function weatherInfo(code, isDay) {
       ? { label: "Clear Sky", icon: "clear-day", mood: "sunny" }
       : { label: "Clear Night", icon: "clear-night", mood: "clear-night" };
   }
-
   if (code <= 2) {
     return isDay
       ? { label: "Partly Cloudy", icon: "overcast-day", mood: "cloudy" }
@@ -25,7 +24,6 @@ function weatherInfo(code, isDay) {
           mood: "clear-night",
         };
   }
-
   if (code === 3)
     return { label: "Overcast", icon: "overcast-day", mood: "cloudy" };
   if (code <= 49) return { label: "Foggy", icon: "fog", mood: "cloudy" };
@@ -34,13 +32,11 @@ function weatherInfo(code, isDay) {
   if (code <= 79) return { label: "Snow", icon: "snow", mood: "snow" };
   if (code <= 94)
     return { label: "Storm", icon: "thunderstorms", mood: "thunder" };
-
   return { label: "Unknown", icon: "cloudy", mood: "cloudy" };
 }
 
 function getMoodBg(mood, forceNight) {
   if (forceNight) return "var(--bg-night)";
-
   const map = {
     sunny: "var(--bg-sunny)",
     cloudy: "var(--bg-cloudy)",
@@ -49,7 +45,6 @@ function getMoodBg(mood, forceNight) {
     thunder: "var(--bg-thunder)",
     "clear-night": "var(--bg-clear-night)",
   };
-
   return map[mood] || "var(--bg-cloudy)";
 }
 
@@ -57,13 +52,11 @@ function getMoodBg(mood, forceNight) {
 function updateEffects(mood) {
   const starsOverlay = document.getElementById("stars-overlay");
   const rainOverlay = document.getElementById("rain-overlay");
-
   starsOverlay.classList.toggle("visible", mood === "clear-night");
   rainOverlay.classList.toggle(
     "visible",
     mood === "rain" || mood === "thunder",
   );
-
   if (mood === "clear-night" && !starsOverlay.children.length) buildStars();
   if ((mood === "rain" || mood === "thunder") && !rainOverlay.children.length)
     buildRain();
@@ -74,7 +67,7 @@ function getWindDir(deg) {
   return dirs[Math.round(deg / 45) % 8];
 }
 
-// Humidity description based on huminity percent
+// Humidity description based on humidity percent
 function getHumidityDesc(h) {
   if (h < 40) return "Dry air — comfortable";
   if (h < 50) return "Ideal — comfortable and healthy";
@@ -84,22 +77,131 @@ function getHumidityDesc(h) {
 
 // Icon setting based on hourly weather code
 function hourlyInfo(code) {
-  if (code === 0) {
-    return { icon: "clear-day" };
-  }
-
-  if (code <= 2) {
-    return { icon: "partly-cloudy-night" };
-  }
-
+  if (code === 0) return { icon: "clear-day" };
+  if (code <= 2) return { icon: "partly-cloudy-night" };
   if (code === 3) return { icon: "overcast-day" };
   if (code <= 49) return { icon: "fog" };
   if (code <= 59) return { icon: "drizzle" };
   if (code <= 69) return { icon: "rain" };
   if (code <= 79) return { icon: "snow" };
   if (code <= 94) return { icon: "thunderstorms" };
-
   return { icon: "cloudy" };
+}
+
+// ---- Clothing suggestions ----
+function getClothingSuggestions(temp, weatherCode, humidity) {
+  const suggestions = [];
+
+  if (temp <= 0) {
+    suggestions.push("Heavy winter coat essential");
+    suggestions.push("Thermal layers recommended");
+    suggestions.push("Gloves, scarf and hat needed");
+  } else if (temp <= 8) {
+    suggestions.push("Warm coat and layers");
+    suggestions.push("Scarf and gloves advised");
+  } else if (temp <= 14) {
+    suggestions.push("Light jacket or hoodie");
+    suggestions.push("Long sleeves recommended");
+  } else if (temp <= 20) {
+    suggestions.push("Light clothing with a layer");
+    suggestions.push("A cardigan or light jacket");
+  } else if (temp <= 27) {
+    suggestions.push("Light clothing recommended");
+    suggestions.push("T-shirt and shorts weather");
+  } else {
+    suggestions.push("Very light clothing only");
+    suggestions.push("Stay in the shade if possible");
+  }
+
+  if (weatherCode >= 51 && weatherCode <= 69) {
+    suggestions.push("Bring an umbrella");
+    suggestions.push("Waterproof shoes advised");
+  } else if (weatherCode >= 71 && weatherCode <= 79) {
+    suggestions.push("Waterproof boots needed");
+    suggestions.push("Snow gear if going out");
+  } else if (weatherCode >= 80 && weatherCode <= 94) {
+    suggestions.push("Rain jacket essential");
+    suggestions.push("Avoid open areas — storms");
+  } else if (weatherCode === 0 && temp > 18) {
+    suggestions.push("Sunglasses recommended");
+    suggestions.push("Sunscreen if outside long");
+  }
+
+  if (humidity >= 80) {
+    suggestions.push("Breathable fabrics advised");
+  } else if (humidity < 30) {
+    suggestions.push("Stay hydrated — dry air");
+  }
+
+  return [...new Set(suggestions)].slice(0, 3);
+}
+
+// ---- Place suggestions from places.json ----
+let placesData = null;
+
+async function loadPlacesData() {
+  if (placesData) return placesData;
+  try {
+    const res = await fetch("placeSuggestion.json");
+    placesData = await res.json();
+  } catch (err) {
+    console.error("Could not load places.json:", err);
+    placesData = { cities: [] };
+  }
+  return placesData;
+}
+
+function getPlaceSuggestions(weatherCode, temp, isDay, cityName) {
+  if (!placesData || !placesData.cities.length)
+    return getFallbackPlaces(weatherCode, temp, isDay);
+
+  const normalised = cityName?.toLowerCase() ?? "";
+  const match = placesData.cities.find(
+    (c) =>
+      normalised.includes(c.name.toLowerCase()) ||
+      c.name.toLowerCase().includes(normalised.split(",")[0].trim()),
+  );
+
+  const pool = match
+    ? !isDay
+      ? match.night
+      : weatherCode >= 51 || temp < 8
+        ? match.indoor
+        : match.outdoor
+    : getFallbackPlaces(weatherCode, temp, isDay);
+
+  return pool.sort(() => Math.random() - 0.5).slice(0, 3);
+}
+
+function getFallbackPlaces(weatherCode, temp, isDay) {
+  const outdoor = [
+    { place: "City Park", desc: "Great weather for a walk outside" },
+    { place: "Botanical Garden", desc: "Perfect conditions for exploring" },
+    { place: "Waterfront Promenade", desc: "Enjoy the fresh air by the water" },
+    { place: "Open-air Market", desc: "Ideal day to browse local stalls" },
+    { place: "Rooftop Café", desc: "Clear skies, great views await" },
+    { place: "Cycling Trail", desc: "Hop on a bike and enjoy the ride" },
+  ];
+  const indoor = [
+    { place: "Museum of Art", desc: "Perfect day to explore indoors" },
+    { place: "Local Cinema", desc: "Catch a film and stay dry" },
+    { place: "Cosy Café", desc: "Warm up with a hot drink" },
+    { place: "Shopping Centre", desc: "Stay comfortable and explore" },
+    { place: "Aquarium", desc: "Fascinating for all ages indoors" },
+    { place: "Indoor Gallery", desc: "Discover local art and culture" },
+  ];
+  const night = [
+    { place: "Rooftop Bar", desc: "Great night for city views" },
+    { place: "Jazz Club", desc: "Enjoy live music tonight" },
+    { place: "Night Market", desc: "Street food and evening vibes" },
+    { place: "Planetarium", desc: "Clear skies — perfect for stargazing" },
+  ];
+  const pool = !isDay
+    ? night
+    : weatherCode >= 51 || temp < 8
+      ? indoor
+      : outdoor;
+  return pool.sort(() => Math.random() - 0.5).slice(0, 3);
 }
 
 // Converting the cityname into latitude and longitude, and replace in the weather URL
@@ -121,7 +223,6 @@ async function searchCity(cityName) {
     const { latitude, longitude, name, country } = data.results[0];
     localStorage.setItem("lastCity", name);
 
-    // Update city label in your .city span
     const cityEl = document.querySelector(".city");
     if (cityEl) cityEl.innerText = `${name}, ${country}`;
 
@@ -148,13 +249,13 @@ function handleSearch() {
   if (city) searchCity(city);
 }
 
-//Loading handler
+// Loading handler
 function load(visible) {
   document.getElementById("loading-overlay").classList.toggle("show", visible);
 }
 
-// Rendering weather
-function renderWeather(data) {
+// ---- Rendering weather (async to support places.json) ----
+async function renderWeather(data) {
   const c = data.current;
   const humidity = c.relative_humidity_2m;
   const currentTemp = c.temperature_2m;
@@ -167,10 +268,9 @@ function renderWeather(data) {
   const mood = isNightMode ? "clear-night" : wInfo.mood;
 
   document.body.style.background = getMoodBg(mood, isNightMode);
-
   updateEffects(mood);
 
-  //Save action
+  // Save action
   const saveBtn = document.querySelector(".saveBtn button");
   if (saveBtn) {
     saveBtn.onclick = () => {
@@ -182,7 +282,6 @@ function renderWeather(data) {
         hour: "2-digit",
         minute: "2-digit",
       });
-
       const entry = {
         city: cityText,
         cityRaw: cityText.split(",")[0].trim(),
@@ -191,7 +290,6 @@ function renderWeather(data) {
         label: wInfo.label,
         icon: wInfo.icon,
       };
-
       const arr = getSaved();
       const alreadySaved = arr.some((s) => s.city === cityText);
       if (!alreadySaved) {
@@ -213,13 +311,12 @@ function renderWeather(data) {
   const weather = document.querySelector(".weather");
   if (weather) {
     weather.innerHTML = `
-    <div class="currentTime" id="currentTime"></div>
-     <div class="estTemp">
-        ${currentTemp}°C 
-        <img class="weatherIcon" 
-       src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${wInfo.icon}.svg">
+      <div class="currentTime" id="currentTime"></div>
+      <div class="estTemp">
+        ${currentTemp}°C
+        <img class="weatherIcon"
+          src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${wInfo.icon}.svg">
       </div>
-      
       <div class="estWeather">${wInfo.label}</div>
     `;
 
@@ -250,18 +347,30 @@ function renderWeather(data) {
     window._clockInterval = setInterval(updateClock, 1000);
   }
 
+  // Clothing suggestions
+  const suggestionGroup = document.querySelector(".suggestionGroup");
+  if (suggestionGroup) {
+    const suggestions = getClothingSuggestions(
+      currentTemp,
+      c.weather_code,
+      humidity,
+    );
+    suggestionGroup.innerHTML = suggestions
+      .map((s) => `<div class="suggestion">${s}</div>`)
+      .join("");
+  }
+
   // Humidity
   const estHumidity = document.querySelector(".estHumidity");
-  estHumidity.innerHTML = `<div class="value">${humidity}% </div>
-  <div class="humidity-bar">
-    <div class="humidity-fill"></div>
-  </div>
-
-  <div class="desc">${getHumidityDesc(humidity)}</div>`;
+  estHumidity.innerHTML = `
+    <div class="value">${humidity}%</div>
+    <div class="humidity-bar">
+      <div class="humidity-fill"></div>
+    </div>
+    <div class="desc">${getHumidityDesc(humidity)}</div>
+  `;
   const humidityFill = document.querySelector(".humidity-fill");
-  if (humidityFill) {
-    humidityFill.style.width = `${humidity}%`;
-  }
+  if (humidityFill) humidityFill.style.width = `${humidity}%`;
 
   // Average Temperature
   const sum = hourlyTemps.reduce((total, temp) => total + temp, 0);
@@ -269,24 +378,21 @@ function renderWeather(data) {
   const atd = currentTemp - avgTemp;
   const averageTemp = document.querySelector(".avgTemp");
   averageTemp.innerHTML = `${avgTemp.toFixed(1)}°C
-  <div class="avgTDescription"><span>${atd.toFixed(1)}°C</span> higher than Average Temperature </div>`;
+    <div class="avgTDescription"><span>${atd.toFixed(1)}°C</span> higher than Average Temperature</div>`;
 
-  //Wind Canvas
+  // Wind Canvas
   const windCard = document.getElementById("wind-card");
   windCard.innerHTML = `
-  <div class="windInfo">
-    <div class="statLabel">Wind</div>
-    
-    <div class="windSpeed">${windSpeed}<span class="kmp">km/h</span></div>
-    
-    <span>Direction: ${getWindDir(windDir)}</span>
-    <span>${windDir}°</span>
-  </div>
-
-  <div class="wind-animation">
-    <canvas id="wind-canvas"></canvas>
-  </div>
-    `;
+    <div class="windInfo">
+      <div class="statLabel">Wind</div>
+      <div class="windSpeed">${windSpeed}<span class="kmp">km/h</span></div>
+      <span>Direction: ${getWindDir(windDir)}</span>
+      <span>${windDir}°</span>
+    </div>
+    <div class="wind-animation">
+      <canvas id="wind-canvas"></canvas>
+    </div>
+  `;
 
   // Hourly forecast
   const hourlyF = document.querySelector(".hForecastCards");
@@ -296,20 +402,105 @@ function renderWeather(data) {
   for (let i = 0; i < 24; i++) {
     const code = data.hourly.weather_code[i];
     const hInfo = hourlyInfo(code);
-
     const hCard = document.createElement("div");
     hCard.className = "hCard";
-
     hCard.innerHTML = `
-    <div class="time">${String(i).padStart(2, "0")}:00</div>
-    
-    <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${hInfo.icon}.svg" width="40">
-    <div class="temp">${hourlyTemps[i]}°C</div>
-  `;
-
+      <div class="time">${String(i).padStart(2, "0")}:00</div>
+      <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${hInfo.icon}.svg" width="40">
+      <div class="temp">${hourlyTemps[i]}°C</div>
+    `;
     hourlyF.append(hCard);
-    renderWeeklyForecast(data.daily);
   }
+
+  // Weekly forecast
+  renderWeeklyForecast(data.daily);
+
+  // ---- Place suggestions (redesigned — no icons, tab switcher) ----
+  await loadPlacesData();
+  const cityEl = document.querySelector(".city");
+  const cityName = cityEl ? cityEl.innerText : "";
+
+  const tabDefs = [
+    {
+      key: "outdoor",
+      label: "Outdoor",
+      badge: "Outdoor",
+      badgeClass: "badge-outdoor",
+    },
+    {
+      key: "indoor",
+      label: "Indoor",
+      badge: "Indoor",
+      badgeClass: "badge-indoor",
+    },
+    {
+      key: "night",
+      label: "Tonight",
+      badge: "Tonight",
+      badgeClass: "badge-night",
+    },
+  ];
+
+  let psActive = isDay
+    ? c.weather_code >= 51 || currentTemp < 8
+      ? "indoor"
+      : "outdoor"
+    : "night";
+
+  function renderPsCards() {
+    const psCards = document.getElementById("psCards");
+    psCards.innerHTML = "";
+    const match = placesData?.cities?.find(
+      (ci) =>
+        cityName.toLowerCase().includes(ci.name.toLowerCase()) ||
+        ci.name
+          .toLowerCase()
+          .includes(cityName.split(",")[0].trim().toLowerCase()),
+    );
+    const tab = tabDefs.find((t) => t.key === psActive);
+    const pool = match
+      ? match[psActive]
+      : getFallbackPlaces(
+          c.weather_code,
+          currentTemp,
+          psActive === "night" ? false : isDay,
+        );
+
+    document.getElementById("psBadge").innerHTML =
+      `<div class="ps-badge ${tab.badgeClass}">${tab.badge}</div>`;
+    pool.forEach((p, i) => {
+      const card = document.createElement("div");
+      card.className = `psCard ${psActive}`;
+      card.innerHTML = `
+    <div class="ps-shimmer"></div>
+    <div>
+      <div class="psPlace">${p.place}</div>
+      <div class="desc">${p.desc}</div>
+    </div>
+    <div class="ps-number">0${i + 1}</div>
+  `;
+      psCards.appendChild(card);
+    });
+
+    document.querySelectorAll(".ps-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.key === psActive);
+    });
+  }
+
+  const psTabs = document.getElementById("psTabs");
+  psTabs.innerHTML = "";
+  tabDefs.forEach((t) => {
+    const btn = document.createElement("button");
+    btn.className = "ps-tab" + (t.key === psActive ? " active" : "");
+    btn.dataset.key = t.key;
+    btn.textContent = t.label;
+    btn.onclick = () => {
+      psActive = t.key;
+      renderPsCards();
+    };
+    psTabs.appendChild(btn);
+  });
+  renderPsCards();
 
   setTimeout(() => initWindCanvas(windSpeed, windDir), 50);
 }
@@ -321,34 +512,27 @@ async function currentLocation() {
       fetchWeather().then(resolve);
       return;
     }
-
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const lat = position.coords.latitude.toFixed(2);
         const lng = position.coords.longitude.toFixed(2);
-
         try {
           const res = await fetch(
             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`,
           );
           const data = await res.json();
           const address = data.address;
-
           const city =
             address.city ||
             address.town ||
             address.municipality ||
             address.county;
-
           const cityEl = document.querySelector(".city");
           if (cityEl) cityEl.innerText = `${city}, ${address.country}`;
-
           if (city) localStorage.setItem("lastCity", city);
         } catch (err) {
           console.error("Reverse geocoding failed:", err);
         }
-
-        // Update weather API URL with real coordinates and fetch
         weatherAPI =
           `https://api.open-meteo.com/v1/forecast` +
           `?latitude=${lat}&longitude=${lng}` +
@@ -356,7 +540,6 @@ async function currentLocation() {
           `&hourly=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m,wind_direction_10m` +
           `&current=temperature_2m,is_day,relative_humidity_2m,rain,snowfall,weather_code,wind_speed_10m,wind_direction_10m` +
           `&minutely_15=temperature_2m,relative_humidity_2m,rain,weather_code,wind_speed_10m,wind_direction_10m,is_day`;
-
         await fetchWeather();
         resolve();
       },
@@ -370,6 +553,7 @@ async function currentLocation() {
   });
 }
 
+// ---- Saved locations ----
 function getSaved() {
   try {
     return JSON.parse(localStorage.getItem("savedLocations")) || [];
@@ -398,22 +582,21 @@ function renderSavedCards() {
     const card = document.createElement("div");
     card.className = "savedCard";
     card.innerHTML = `
-  <div class="savedCardLeft">
-    <div class="savedCardCity">${s.city}</div>
-    <div class="savedCardMeta">${s.time}</div>
-    <div class="savedCardBottom">
-      <div class="savedCardTemp">${s.temp}</div>
-      <div class="savedCardLabel">${s.label}</div>
-    </div>
-  </div>
-  <div class="savedCardIcon">
-    <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${s.icon}.svg">
-  </div>
-  <div class="savedCardRight">
-    <button class="savedCardRemove" data-i="${i}">&#x2715;</button>
-  </div>
-`;
-    // Click card body to load that city
+      <div class="savedCardLeft">
+        <div class="savedCardCity">${s.city}</div>
+        <div class="savedCardMeta">${s.time}</div>
+        <div class="savedCardBottom">
+          <div class="savedCardTemp">${s.temp}</div>
+          <div class="savedCardLabel">${s.label}</div>
+        </div>
+      </div>
+      <div class="savedCardIcon">
+        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${s.icon}.svg">
+      </div>
+      <div class="savedCardRight">
+        <button class="savedCardRemove" data-i="${i}">&#x2715;</button>
+      </div>
+    `;
     card.addEventListener("click", (e) => {
       if (e.target.classList.contains("savedCardRemove")) return;
       closeSavedOverlay();
@@ -441,16 +624,14 @@ function closeSavedOverlay() {
   document.getElementById("savedOverlay").classList.remove("show");
 }
 
-//-----------------------------------------------------------------------------------------------
-
-// Fetching API
+// ---- Fetching API ----
 async function fetchWeather() {
   load(true);
   try {
     const response = await fetch(weatherAPI);
     if (!response.ok) throw new Error("Failed to fetch weather data");
     const data = await response.json();
-    renderWeather(data);
+    await renderWeather(data);
   } catch (err) {
     console.error("Error fetching weather:", err);
   }
@@ -467,15 +648,11 @@ function dayNight(mode) {
 
   if (mode === "day") {
     isNightMode = false;
-
     body.classList.remove("night");
     body.classList.add("day");
-
     dayBtn.classList.add("active");
     nightBtn.classList.remove("active");
-
     localStorage.setItem("theme", "day");
-
     if (starsOverlay) starsOverlay.innerHTML = "";
     if (rainOverlay) {
       rainOverlay.classList.add("visible");
@@ -484,15 +661,11 @@ function dayNight(mode) {
     }
   } else {
     isNightMode = true;
-
     body.classList.remove("day");
     body.classList.add("night");
-
     nightBtn.classList.add("active");
     dayBtn.classList.remove("active");
-
     localStorage.setItem("theme", "night");
-
     if (starsOverlay) {
       starsOverlay.classList.add("visible");
       starsOverlay.innerHTML = "";
@@ -531,12 +704,9 @@ window.onload = function () {
     currentLocation();
   }
 
-  //---------------------------------------------------------------------------------------
-  // Reload the website when search button is clicked
   const btn = document.querySelector(".searchBtn button");
   if (btn) btn.addEventListener("click", handleSearch);
 
-  // Reload the website when someone enters "Enter" after the city is written
   const input = document.getElementById("search");
   if (input)
     input.addEventListener("keydown", (e) => {
@@ -555,7 +725,7 @@ window.onload = function () {
   });
 };
 
-// Star creation (AI generated)
+// Star creation
 function buildStars() {
   const el = document.getElementById("stars-overlay");
   for (let i = 0; i < 120; i++) {
@@ -574,7 +744,7 @@ function buildStars() {
   }
 }
 
-// Rain creation (AI generated)
+// Rain creation
 function buildRain() {
   const el = document.getElementById("rain-overlay");
   for (let i = 0; i < 80; i++) {
@@ -592,7 +762,7 @@ function buildRain() {
   }
 }
 
-// Wind canvas (AI generated)
+// Wind canvas
 function initWindCanvas(speed, direction) {
   const windCanvas = document.getElementById("wind-canvas");
   if (!windCanvas) return;
@@ -600,10 +770,8 @@ function initWindCanvas(speed, direction) {
 
   const dpr = window.devicePixelRatio || 1;
   const rect = windCanvas.getBoundingClientRect();
-
   windCanvas.width = rect.width * dpr;
   windCanvas.height = rect.height * dpr;
-
   windCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   const W = rect.width;
@@ -631,7 +799,7 @@ function initWindCanvas(speed, direction) {
   animateWind(W, H, vx, vy);
 }
 
-// Wind animation (AI generated)
+// Wind animation
 function animateWind(W, H, vx, vy) {
   windCtx.clearRect(0, 0, W, H);
   windCtx.fillStyle = "rgba(0,0,0,0.03)";
@@ -642,14 +810,12 @@ function animateWind(W, H, vx, vy) {
     const grad = windCtx.createLinearGradient(tail.x, tail.y, p.x, p.y);
     grad.addColorStop(0, `rgba(255,255,255,0)`);
     grad.addColorStop(1, `rgba(255,255,255,${p.opacity})`);
-
     windCtx.beginPath();
     windCtx.moveTo(tail.x, tail.y);
     windCtx.lineTo(p.x, p.y);
     windCtx.strokeStyle = grad;
     windCtx.lineWidth = 1.5;
     windCtx.stroke();
-
     p.x += vx * p.speed;
     p.y += vy * p.speed;
     if (p.x > W + 20) p.x = -20;
@@ -661,7 +827,7 @@ function animateWind(W, H, vx, vy) {
   animFrame = requestAnimationFrame(() => animateWind(W, H, vx, vy));
 }
 
-//-------------------------------------------------------- Weather Forecast (Ai generated)
+// ---- Weekly Forecast ----
 function buildAllWeeks(centerYear, centerMonth) {
   function daysInMonth(y, m) {
     return new Date(y, m + 1, 0).getDate();
@@ -744,12 +910,10 @@ function buildAllWeeks(centerYear, centerMonth) {
 }
 
 function renderWeeklyForecast(daily) {
+  const PAGE_SIZE = 5;
   let globalWeeks = [];
   let globalIndex = 0;
-
-  function iconFor(code) {
-    return hourlyInfo(code).icon;
-  }
+  let windowStart = 0;
 
   function rebuild(y, m) {
     globalWeeks = buildAllWeeks(y, m);
@@ -770,35 +934,16 @@ function renderWeeklyForecast(daily) {
       );
       if (globalIndex < 0) globalIndex = 0;
     }
-    document.getElementById("prevMonth").onclick = () => {
-      let m = globalWeeks[globalIndex].labelMonth - 1;
-      let y = globalWeeks[globalIndex].labelYear;
-      if (m < 0) {
-        m = 11;
-        y--;
-      }
-      rebuild(y, m);
-      globalIndex = globalWeeks.findIndex(
-        (w) => w.labelYear === y && w.labelMonth === m,
-      );
-      if (globalIndex < 0) globalIndex = 0;
-      draw();
-    };
+  }
 
-    document.getElementById("nextMonth").onclick = () => {
-      let m = globalWeeks[globalIndex].labelMonth + 1;
-      let y = globalWeeks[globalIndex].labelYear;
-      if (m > 11) {
-        m = 0;
-        y++;
-      }
-      rebuild(y, m);
-      globalIndex = globalWeeks.findIndex(
-        (w) => w.labelYear === y && w.labelMonth === m,
-      );
-      if (globalIndex < 0) globalIndex = 0;
-      draw();
-    };
+  function clampWindow() {
+    if (globalIndex < windowStart) windowStart = globalIndex;
+    else if (globalIndex >= windowStart + PAGE_SIZE)
+      windowStart = globalIndex - PAGE_SIZE + 1;
+    windowStart = Math.max(
+      0,
+      Math.min(windowStart, Math.max(0, globalWeeks.length - PAGE_SIZE)),
+    );
   }
 
   function draw() {
@@ -818,7 +963,7 @@ function renderWeeklyForecast(daily) {
     const row = document.createElement("div");
     row.className = "wfWeekRow";
 
-    week.cells.forEach(({ day, month, year, overflow }, idx) => {
+    week.cells.forEach(({ day, month, year, overflow }) => {
       const cell = document.createElement("div");
       const isToday =
         year === today.getFullYear() &&
@@ -834,34 +979,17 @@ function renderWeeklyForecast(daily) {
 
       cell.innerHTML = `
         <div class="wfDayNum">${day}</div>
-        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${iconFor(code)}.svg">
+        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${hourlyInfo(code).icon}.svg">
         <div class="wfTemp">${max}° - ${min}°</div>
       `;
       row.appendChild(cell);
     });
     grid.appendChild(row);
 
-    // Pagination — only tabs for current label month
-    const curY = week.labelYear,
-      curM = week.labelMonth;
-    const monthWeeks = globalWeeks
-      .map((w, i) => ({ w, i }))
-      .filter(({ w }) => w.labelYear === curY && w.labelMonth === curM);
-
+    // Pagination — 5-slot sliding window
+    clampWindow();
     const pag = document.getElementById("wfPagination");
     pag.innerHTML = "";
-
-    monthWeeks.forEach(({ w, i }) => {
-      const btn = document.createElement("button");
-      btn.className = "wfPageBtn" + (i === globalIndex ? " active" : "");
-      const valid = w.cells.filter((c) => !c.overflow);
-      btn.textContent = `${valid[0].day}–${valid[valid.length - 1].day}`;
-      btn.onclick = () => {
-        globalIndex = i;
-        draw();
-      };
-      pag.appendChild(btn);
-    });
 
     const prevBtn = document.createElement("button");
     prevBtn.className = "wfPageBtn arrow";
@@ -870,9 +998,30 @@ function renderWeeklyForecast(daily) {
     prevBtn.onclick = () => {
       globalIndex--;
       maybeRebuild();
+      clampWindow();
       draw();
     };
     pag.appendChild(prevBtn);
+
+    for (let slot = 0; slot < PAGE_SIZE; slot++) {
+      const wi = windowStart + slot;
+      const btn = document.createElement("button");
+      btn.className = "wfPageBtn";
+      if (wi >= globalWeeks.length) {
+        btn.classList.add("hidden");
+        btn.textContent = "–";
+      } else {
+        const w = globalWeeks[wi];
+        const valid = w.cells.filter((c) => !c.overflow);
+        btn.textContent = `${valid[0].day}–${valid[valid.length - 1].day}`;
+        if (wi === globalIndex) btn.classList.add("active");
+        btn.onclick = () => {
+          globalIndex = wi;
+          draw();
+        };
+      }
+      pag.appendChild(btn);
+    }
 
     const nextBtn = document.createElement("button");
     nextBtn.className = "wfPageBtn arrow";
@@ -881,10 +1030,44 @@ function renderWeeklyForecast(daily) {
     nextBtn.onclick = () => {
       globalIndex++;
       maybeRebuild();
+      clampWindow();
       draw();
     };
     pag.appendChild(nextBtn);
   }
+
+  // Header month arrows — wired once here, outside draw()
+  document.getElementById("prevMonth").onclick = () => {
+    let m = globalWeeks[globalIndex].labelMonth - 1;
+    let y = globalWeeks[globalIndex].labelYear;
+    if (m < 0) {
+      m = 11;
+      y--;
+    }
+    rebuild(y, m);
+    globalIndex = globalWeeks.findIndex(
+      (w) => w.labelYear === y && w.labelMonth === m,
+    );
+    if (globalIndex < 0) globalIndex = 0;
+    windowStart = globalIndex;
+    draw();
+  };
+
+  document.getElementById("nextMonth").onclick = () => {
+    let m = globalWeeks[globalIndex].labelMonth + 1;
+    let y = globalWeeks[globalIndex].labelYear;
+    if (m > 11) {
+      m = 0;
+      y++;
+    }
+    rebuild(y, m);
+    globalIndex = globalWeeks.findIndex(
+      (w) => w.labelYear === y && w.labelMonth === m,
+    );
+    if (globalIndex < 0) globalIndex = 0;
+    windowStart = globalIndex;
+    draw();
+  };
 
   // Init — start on today's week
   const today = new Date();
@@ -896,5 +1079,6 @@ function renderWeeklyForecast(daily) {
     ),
   );
   if (globalIndex < 0) globalIndex = 0;
+  windowStart = globalIndex;
   draw();
 }
