@@ -272,6 +272,10 @@ nav {
   padding: 24px 32px;
 }
 
+.placeSuggestionCard {
+  margin-bottom: 30px;
+}
+
 .cityLine {
   display: flex;
   justify-content: space-between;
