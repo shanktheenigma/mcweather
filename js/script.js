@@ -1,4 +1,3 @@
-//Remember to add time
 let geoCodingAPI = "https://geocoding-api.open-meteo.com/v1/search";
 let weatherAPI =
   "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m,wind_direction_10m&current=temperature_2m,is_day,relative_humidity_2m,rain,snowfall,weather_code,wind_speed_10m,wind_direction_10m&minutely_15=temperature_2m,relative_humidity_2m,rain,weather_code,wind_speed_10m,wind_direction_10m,is_day";
@@ -88,7 +87,7 @@ function hourlyInfo(code) {
   return { icon: "cloudy" };
 }
 
-// ---- Clothing suggestions ----
+// Clothing suggestions
 function getClothingSuggestions(temp, weatherCode, humidity) {
   const suggestions = [];
 
@@ -142,7 +141,7 @@ let placesData = null;
 async function loadPlacesData() {
   if (placesData) return placesData;
   try {
-    const res = await fetch("placeSuggestion.json");
+    const res = await fetch("data/placeSuggestion.json");
     placesData = await res.json();
   } catch (err) {
     console.error("Could not load places.json:", err);
@@ -415,7 +414,7 @@ async function renderWeather(data) {
   // Weekly forecast
   renderWeeklyForecast(data.daily);
 
-  // ---- Place suggestions (redesigned — no icons, tab switcher) ----
+  // Place suggestions 
   await loadPlacesData();
   const cityEl = document.querySelector(".city");
   const cityName = cityEl ? cityEl.innerText : "";
@@ -553,7 +552,7 @@ async function currentLocation() {
   });
 }
 
-// ---- Saved locations ----
+// Saved locations 
 function getSaved() {
   try {
     return JSON.parse(localStorage.getItem("savedLocations")) || [];
@@ -624,7 +623,7 @@ function closeSavedOverlay() {
   document.getElementById("savedOverlay").classList.remove("show");
 }
 
-// ---- Fetching API ----
+// Fetching API 
 async function fetchWeather() {
   load(true);
   try {
@@ -827,7 +826,7 @@ function animateWind(W, H, vx, vy) {
   animFrame = requestAnimationFrame(() => animateWind(W, H, vx, vy));
 }
 
-// ---- Weekly Forecast ----
+// Weekly Forecast 
 function buildAllWeeks(centerYear, centerMonth) {
   function daysInMonth(y, m) {
     return new Date(y, m + 1, 0).getDate();
@@ -986,7 +985,7 @@ function renderWeeklyForecast(daily) {
     });
     grid.appendChild(row);
 
-    // Pagination — 5-slot sliding window
+    // Pagination
     clampWindow();
     const pag = document.getElementById("wfPagination");
     pag.innerHTML = "";
@@ -1036,7 +1035,6 @@ function renderWeeklyForecast(daily) {
     pag.appendChild(nextBtn);
   }
 
-  // Header month arrows — wired once here, outside draw()
   document.getElementById("prevMonth").onclick = () => {
     let m = globalWeeks[globalIndex].labelMonth - 1;
     let y = globalWeeks[globalIndex].labelYear;
